@@ -10,6 +10,8 @@ V1 ships the embedded engine first; adapters are layered on top.
 
 ## Packages
 
+Package inventory with entry exports: [`docs/packages.md`](docs/packages.md).
+
 - [`@hexmon_tech/core`](packages/core): core types, errors, capability flags, helper utilities.
 - [`@hexmon_tech/policy-dsl`](packages/policy-dsl): JSON policy DSL schema, validation, and builder.
 - [`@hexmon_tech/compiler`](packages/compiler): policy compiler to deterministic IR + diagnostics + hashing.
@@ -32,8 +34,9 @@ pnpm -r lint
 pnpm -r typecheck
 pnpm -r test
 pnpm -r build
+pnpm exports:check
 pnpm -r pack:check
-pnpm smoke:check
+pnpm smoke-tests
 ```
 
 ## Changesets
@@ -43,3 +46,18 @@ pnpm changeset
 pnpm version-packages
 pnpm release
 ```
+
+## Publishing
+
+Automated publishing runs from `.github/workflows/release.yml` on push to `main` using Changesets.
+
+Flow:
+
+1. Add a changeset in your PR (`pnpm changeset`).
+2. Merge PR to `main`.
+3. Release workflow runs verification and `changesets/action`.
+4. Merge the generated version PR (`chore(release): version packages`) to trigger npm publish.
+
+Required secret:
+
+- `NPM_TOKEN` with publish access to the `@hexmon_tech` npm scope.

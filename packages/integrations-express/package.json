@@ -1,6 +1,6 @@
 {
   "name": "@hexmon_tech/integrations-express",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "acx integrations-express package.",
   "license": "MIT",
   "engines": {
@@ -32,7 +32,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
-  "author": "ACX Authors",
+  "author": "Hexmon Technology",
   "keywords": [
     "access-control",
     "authorization",
@@ -49,6 +49,16 @@
     "access": "public"
   },
   "peerDependencies": {
-    "express": "^4.18.0 || ^5.0.0"
+    "express": "^4.18.0 || ^5.0.0",
+    "@types/express": "^4.17.21 || ^5.0.0"
+  },
+  "homepage": "https://github.com/acx-dev/acx",
+  "bugs": {
+    "url": "https://github.com/acx-dev/acx/issues"
+  },
+  "peerDependenciesMeta": {
+    "@types/express": {
+      "optional": true
+    }
   }
 }

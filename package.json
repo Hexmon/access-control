@@ -9,7 +9,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings=0",
+    "lint": "pnpm -r lint",
     "format": "prettier . --check",
     "format:write": "prettier . --write",
     "test": "pnpm -r test",
@@ -20,7 +20,9 @@
     "format:check": "prettier . --check",
     "typecheck": "pnpm -r typecheck",
     "pack:check": "pnpm -r pack:check",
-    "smoke:check": "node scripts/smoke/run.mjs"
+    "smoke-tests": "node scripts/smoke/run.mjs",
+    "smoke:check": "pnpm smoke-tests",
+    "exports:check": "node scripts/exports/check.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.8",

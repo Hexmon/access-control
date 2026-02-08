@@ -1,15 +1,23 @@
-name: Release Readiness
+name: Release
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
   push:
     branches:
       - main
 
-jobs:
-  release-readiness:
-    runs-on: ubuntu-latest
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,6 +32,8 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -31,11 +41,11 @@ jobs:
       - name: Check formatting
         run: pnpm format:check
 
-      - name: Lint
-        run: pnpm -r lint
-
       - name: Typecheck
         run: pnpm -r typecheck
+
+      - name: Lint
+        run: pnpm -r lint
 
       - name: Test
         run: pnpm -r test
@@ -43,25 +53,24 @@ jobs:
       - name: Build
         run: pnpm -r build
 
+      - name: Smoke tests
+        run: pnpm smoke-tests
+
+      - name: Exports check
+        run: pnpm exports:check
+
       - name: Pack check
         run: pnpm -r pack:check
 
-      - name: Smoke checks
-        run: pnpm smoke:check
-
-      - name: Changeset status
-        run: pnpm changeset status
-
-      - name: Apply versioning changes (no publish)
-        run: pnpm changeset version
-
-      - name: Capture versioning diff
-        run: |
-          git status --short
-          git diff > changeset-version.patch
-
-      - name: Upload versioning artifact
-        uses: actions/upload-artifact@v4
+      - name: Create version PR or publish
+        uses: changesets/action@v1
         with:
-          name: changeset-version-patch
-          path: changeset-version.patch
+          version: pnpm version-packages
+          publish: pnpm release
+          title: 'chore(release): version packages'
+          commit: 'chore(release): version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: 'true'

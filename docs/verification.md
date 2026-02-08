@@ -13,15 +13,17 @@ pnpm -r lint
 pnpm -r typecheck
 pnpm -r test
 pnpm -r build
+pnpm exports:check
 pnpm -r pack:check
-pnpm smoke:check
+pnpm smoke-tests
 ```
 
 Expected result:
 
 - Every command exits `0`
 - `pack:check` prints one `pack:check ok for @hexmon_tech/<pkg>` per package
-- `smoke:check` ends with `smoke:check passed`
+- `exports:check` prints one `exports:check ok for @hexmon_tech/<pkg>` per package
+- `smoke-tests` ends with `smoke:check passed`
 
 ## Per-Package Verification
 
@@ -73,7 +75,8 @@ The smoke runner validates:
 Run:
 
 ```bash
-pnpm smoke:check
+pnpm exports:check
+pnpm smoke-tests
 ```
 
 ## CLI Verification
@@ -102,4 +105,4 @@ Expected output includes:
 
 The CI workflow (`.github/workflows/ci.yml`) runs the same checks used above.
 
-The release-readiness workflow (`.github/workflows/release.yml`) runs the same checks plus `changeset status` and `changeset version` (no publish step).
+The release workflow (`.github/workflows/release.yml`) runs the same checks and then executes Changesets automation for version PR creation and npm publish.

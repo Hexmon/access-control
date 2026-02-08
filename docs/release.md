@@ -1,53 +1,57 @@
 # Release Process
 
-This repository uses Changesets for versioning and release preparation.
+This repository publishes `@hexmon_tech/*` packages using Changesets + GitHub Actions.
 
 ## Prerequisites
 
 - Node.js `>=18`
-- pnpm
+- pnpm (pinned by root `packageManager`)
+- GitHub Actions secret: `NPM_TOKEN` with publish rights for `@hexmon_tech`
 
-## 1) Create a changeset
+## How Automated Release Works
 
-After making package changes, create a changeset:
+1. Add a changeset in your feature PR:
 
 ```bash
 pnpm changeset
 ```
 
-Commit the generated file in `.changeset/`.
+2. Merge the PR to `main`.
+3. `.github/workflows/release.yml` runs on `push` to `main`:
+   - installs dependencies
+   - runs format/typecheck/lint/test/build/smoke-tests/exports:check/pack:check
+   - runs `changesets/action@v1`
+4. Changesets action then:
+   - opens/updates a version PR (`chore(release): version packages`) when changesets exist, or
+   - publishes to npm after version changes are merged and ready.
 
-## 2) Pre-release checks
-
-Run full validation before versioning/publishing:
+## Local Verification Before Merge
 
 ```bash
+pnpm install --frozen-lockfile
+pnpm format:check
+pnpm -r typecheck
+pnpm -r lint
 pnpm -r test
 pnpm -r build
+pnpm smoke-tests
+pnpm exports:check
+pnpm -r pack:check
 ```
 
-## 3) Apply version bumps
+## Manual Fallback Publish
 
-Generate package version updates and changelog entries:
+Use this only if GitHub automation is unavailable:
 
 ```bash
 pnpm version-packages
-```
-
-This runs `changeset version` via the root script.
-
-## 4) Publish later (when credentials are configured)
-
-When ready to publish, run:
-
-```bash
 pnpm release
 ```
 
-The `release` script runs build + `changeset publish`.
+`pnpm release` runs `pnpm build && changeset publish`.
 
-## Notes
+## First Publish Checklist
 
-- This repo does **not** store npm publish secrets.
-- CI release workflow validates and runs versioning logic without publishing.
-- Publishing can be added later by configuring npm auth in CI or local environment.
+- Confirm each package name is available under `@hexmon_tech/*` on npm.
+- Ensure package versions are higher than existing published versions.
+- Ensure `publishConfig.access` is `public` for scoped public packages.

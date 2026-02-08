@@ -1,6 +1,6 @@
 {
   "name": "@hexmon_tech/compiler",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "acx compiler package.",
   "license": "MIT",
   "engines": {
@@ -32,7 +32,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
-  "author": "ACX Authors",
+  "author": "Hexmon Technology",
   "keywords": [
     "access-control",
     "authorization",
@@ -47,5 +47,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "homepage": "https://github.com/acx-dev/acx",
+  "bugs": {
+    "url": "https://github.com/acx-dev/acx/issues"
   }
 }

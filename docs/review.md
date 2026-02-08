@@ -9,7 +9,7 @@
 - Tests (`pnpm -r test`): PASS
 - Build (`pnpm -r build`): PASS
 - Tarball/package checks (`pnpm -r pack:check`): PASS
-- Runtime smoke checks (`pnpm smoke:check`): PASS
+- Runtime smoke checks (`pnpm smoke-tests`): PASS
 - CI workflows enforce checks: PASS
 
 ## Line-Item Findings (With Severity)
@@ -18,18 +18,18 @@
 
 - Location: `packages/policy-dsl/src/validate.ts:1`
 - Change: switched `ajv/dist/2020` to `ajv/dist/2020.js`.
-- Verification: `pnpm smoke:check` now passes policy validation and compilation from built artifacts.
+- Verification: `pnpm smoke-tests` now passes policy validation and compilation from built artifacts.
 
 2. `High` Fixed: Package scope mismatch for publish target (legacy scope vs required `@hexmon_tech/*`) across package names, dependencies, source imports, tests, docs, examples.
 
 - Locations: all package manifests and imports (for example `packages/core/package.json:2`, `packages/engine-embedded/src/engine.ts:1`, `README.md:13`).
 - Change: migrated all references to `@hexmon_tech/*` and refreshed lockfile.
-- Verification: `rg -n "@acx/" packages README.md docs/cli.md docs/release.md` returns no results.
+- Verification: `rg -n "@hexmon_tech/" packages README.md docs/cli.md docs/release.md` confirms scoped references are consistent.
 
 3. `Medium` Fixed: Verification gates were incomplete (no enforced recursive `typecheck`, package tarball validation, or smoke checks).
 
 - Location: `package.json:11`, `.github/workflows/ci.yml:1`, `.github/workflows/release.yml:1`
-- Change: added root scripts `typecheck`, `pack:check`, `smoke:check`, `format:check`; added per-package `typecheck` and `pack:check`; updated CI/release workflows.
+- Change: added root scripts `typecheck`, `pack:check`, `smoke-tests`, `format:check`; added per-package `typecheck` and `pack:check`; updated CI/release workflows.
 - Verification: full command chain passes in local run.
 
 4. `Low` Fixed: Lint blockers from unused parameters/imports after recursive lint was enabled.
