@@ -1,4 +1,4 @@
-import type { Principal } from '@acx/core';
+import type { Principal } from '@hexmon_tech/core';
 
 /** Error thrown by placeholder APIs that must be implemented by consumers. */
 export class NotImplementedError extends Error {
@@ -15,6 +15,7 @@ export class NotImplementedError extends Error {
  * Implement this using your app's auth (JWT/session/cookies) before production use.
  */
 export async function getPrincipalFromRequest(_req: Request): Promise<Principal> {
+  void _req;
   throw new NotImplementedError(
     'getPrincipalFromRequest is a placeholder. Implement principal extraction for your auth stack.',
   );

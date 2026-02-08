@@ -1,4 +1,4 @@
-import type { Action, Decision } from '@acx/core';
+import type { Action, Decision } from '@hexmon_tech/core';
 
 import type {
   ActionInput,
@@ -55,10 +55,7 @@ async function resolveAction<Req extends Express.Request & Record<string, unknow
   actionInput: ActionInput | ((req: Req) => ActionInput | Promise<ActionInput>),
   req: Req,
 ): Promise<Action> {
-  const resolved =
-    typeof actionInput === 'function'
-      ? await actionInput(req)
-      : actionInput;
+  const resolved = typeof actionInput === 'function' ? await actionInput(req) : actionInput;
 
   if (typeof resolved === 'string') {
     return { name: resolved };

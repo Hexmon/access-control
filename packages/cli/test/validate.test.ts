@@ -34,9 +34,9 @@ describe('validate command', () => {
               id: '',
               effect: 'allow',
               actions: [],
-              resourceTypes: ['post']
-            }
-          ]
+              resourceTypes: ['post'],
+            },
+          ],
         },
         null,
         2,

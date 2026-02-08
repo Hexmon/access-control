@@ -1,4 +1,4 @@
-import type { Condition, Ref, RefOrValue } from '@acx/policy-dsl';
+import type { Condition, Ref, RefOrValue } from '@hexmon_tech/policy-dsl';
 
 import type { ConditionInput } from '../ir';
 
@@ -16,17 +16,36 @@ export function evaluateCondition(condition: Condition, input: ConditionInput): 
     case 'ne':
       return !isEqual(resolveValue(condition.left, input), resolveValue(condition.right, input));
     case 'gt':
-      return compareValues(resolveValue(condition.left, input), resolveValue(condition.right, input), 'gt');
+      return compareValues(
+        resolveValue(condition.left, input),
+        resolveValue(condition.right, input),
+        'gt',
+      );
     case 'gte':
-      return compareValues(resolveValue(condition.left, input), resolveValue(condition.right, input), 'gte');
+      return compareValues(
+        resolveValue(condition.left, input),
+        resolveValue(condition.right, input),
+        'gte',
+      );
     case 'lt':
-      return compareValues(resolveValue(condition.left, input), resolveValue(condition.right, input), 'lt');
+      return compareValues(
+        resolveValue(condition.left, input),
+        resolveValue(condition.right, input),
+        'lt',
+      );
     case 'lte':
-      return compareValues(resolveValue(condition.left, input), resolveValue(condition.right, input), 'lte');
+      return compareValues(
+        resolveValue(condition.left, input),
+        resolveValue(condition.right, input),
+        'lte',
+      );
     case 'in':
       return inSet(resolveValue(condition.item, input), resolveValue(condition.set, input));
     case 'contains':
-      return containsValue(resolveValue(condition.text, input), resolveValue(condition.value, input));
+      return containsValue(
+        resolveValue(condition.text, input),
+        resolveValue(condition.value, input),
+      );
     case 'matches':
       return matchesRegex(resolveValue(condition.text, input), condition.regex);
     default: {
@@ -98,11 +117,7 @@ function isEqual(left: unknown, right: unknown): boolean {
   return Object.is(left, right);
 }
 
-function compareValues(
-  left: unknown,
-  right: unknown,
-  op: 'gt' | 'gte' | 'lt' | 'lte',
-): boolean {
+function compareValues(left: unknown, right: unknown, op: 'gt' | 'gte' | 'lt' | 'lte'): boolean {
   if (typeof left === 'number' && typeof right === 'number') {
     switch (op) {
       case 'gt':

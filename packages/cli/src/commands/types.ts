@@ -1,7 +1,7 @@
 import path from 'node:path';
 
-import { stableStringify } from '@acx/compiler';
-import type { PolicySet, RolePermission } from '@acx/policy-dsl';
+import { stableStringify } from '@hexmon_tech/compiler';
+import type { PolicySet, RolePermission } from '@hexmon_tech/policy-dsl';
 
 import { ensureDir, writeFileAtomic } from '../fs';
 import type { CommandContext } from './shared';
@@ -64,14 +64,18 @@ export function generatePolicyTypes(policy: PolicySet, rawPolicy?: unknown): str
 
   if (unresolvedActionPatterns.length > 0) {
     lines.push('');
-    lines.push(`export const UNRESOLVED_ACTION_PATTERNS = ${asConstArray(unresolvedActionPatterns)};`);
+    lines.push(
+      `export const UNRESOLVED_ACTION_PATTERNS = ${asConstArray(unresolvedActionPatterns)};`,
+    );
   }
 
   if (fieldGroups) {
     lines.push('');
     lines.push(`export const FIELD_GROUPS = ${toStableObjectLiteral(fieldGroups)} as const;`);
     lines.push('export type FieldGroupName = keyof typeof FIELD_GROUPS;');
-    lines.push('export type FieldGroupFields<T extends FieldGroupName> = (typeof FIELD_GROUPS)[T][number];');
+    lines.push(
+      'export type FieldGroupFields<T extends FieldGroupName> = (typeof FIELD_GROUPS)[T][number];',
+    );
   }
 
   lines.push('');
@@ -189,9 +193,7 @@ function extractFieldGroups(rawPolicy: unknown): Record<string, readonly string[
       continue;
     }
 
-    const fields = value
-      .filter((item): item is string => typeof item === 'string')
-      .sort();
+    const fields = value.filter((item): item is string => typeof item === 'string').sort();
 
     normalized[key] = Array.from(new Set(fields));
   }

@@ -3,8 +3,13 @@ import type {
   AuthorizationInput,
   AuthorizationOptions,
   Decision,
-} from '@acx/core';
-import type { RebacAdapter, RebacCheckInput, RebacCheckResult, RelationshipTuple } from '@acx/engine-rebac';
+} from '@hexmon_tech/core';
+import type {
+  RebacAdapter,
+  RebacCheckInput,
+  RebacCheckResult,
+  RelationshipTuple,
+} from '@hexmon_tech/engine-rebac';
 import { describe, expect, it, vi } from 'vitest';
 
 import { HybridEngine } from '../src/engine';
@@ -36,7 +41,8 @@ function createEmbeddedMock(decision: Decision): {
   batchAuthorize: ReturnType<typeof vi.fn>;
 } {
   const authorize = vi.fn(
-    async (_input: AuthorizationInput, _options?: AuthorizationOptions): Promise<Decision> => decision,
+    async (_input: AuthorizationInput, _options?: AuthorizationOptions): Promise<Decision> =>
+      decision,
   );
   const batchAuthorize = vi.fn(
     async (inputs: AuthorizationInput[], _options?: AuthorizationOptions): Promise<Decision[]> =>
@@ -56,9 +62,7 @@ function createRebacMock(result: RebacCheckResult): {
   adapter: RebacAdapter;
   check: ReturnType<typeof vi.fn>;
 } {
-  const check = vi.fn(
-    async (_input: RebacCheckInput): Promise<RebacCheckResult> => result,
-  );
+  const check = vi.fn(async (_input: RebacCheckInput): Promise<RebacCheckResult> => result);
 
   const adapter: RebacAdapter = {
     writeTuples: async (_tuples: RelationshipTuple[]): Promise<void> => {},

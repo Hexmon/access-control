@@ -1,8 +1,8 @@
-import type { RoleDefinition, RolePermission } from '@acx/policy-dsl';
-import type { CompiledRule, ConditionInput } from '@acx/compiler';
+import type { RoleDefinition, RolePermission } from '@hexmon_tech/policy-dsl';
+import type { CompiledRule, ConditionInput } from '@hexmon_tech/compiler';
 
-import { evaluateCondition } from '@acx/compiler';
-import { compileFieldSelectors } from '@acx/compiler';
+import { evaluateCondition } from '@hexmon_tech/compiler';
+import { compileFieldSelectors } from '@hexmon_tech/compiler';
 
 import type { RuleIndex } from './indexes';
 import { buildRuleIndex } from './indexes';
@@ -70,7 +70,9 @@ export function buildRoleRuleIndexes(roles?: RoleDefinition[]): Map<string, Rule
 }
 
 function compileRolePermissions(role: RoleDefinition): CompiledRule[] {
-  return role.permissions.map((permission, index) => compilePermissionRule(role.name, permission, index));
+  return role.permissions.map((permission, index) =>
+    compilePermissionRule(role.name, permission, index),
+  );
 }
 
 function compilePermissionRule(

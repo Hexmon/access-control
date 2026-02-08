@@ -1,5 +1,10 @@
-import type { AuthorizationEngine, AuthorizationInput, AuthorizationOptions, Decision } from '@acx/core';
-import { MissingTenantError } from '@acx/core';
+import type {
+  AuthorizationEngine,
+  AuthorizationInput,
+  AuthorizationOptions,
+  Decision,
+} from '@hexmon_tech/core';
+import { MissingTenantError } from '@hexmon_tech/core';
 import { describe, expect, it, vi } from 'vitest';
 
 import { AuthzDeniedError, withAuthz } from '../src/withAuthz';
@@ -30,15 +35,12 @@ describe('withAuthz', () => {
       batchAuthorize: async (): Promise<Decision[]> => [],
     };
 
-    const wrapped = withAuthz(
-      async (value: number): Promise<number> => value * 2,
-      {
-        engine,
-        action: 'calc:run',
-        getPrincipal: async () => ({ id: 'u1', type: 'user', tenantId: 't1' }),
-        getResource: async () => ({ type: 'calc', id: 'r1' }),
-      },
-    );
+    const wrapped = withAuthz(async (value: number): Promise<number> => value * 2, {
+      engine,
+      action: 'calc:run',
+      getPrincipal: async () => ({ id: 'u1', type: 'user', tenantId: 't1' }),
+      getResource: async () => ({ type: 'calc', id: 'r1' }),
+    });
 
     await expect(wrapped(3)).resolves.toBe(6);
   });
@@ -98,15 +100,12 @@ describe('withAuthz', () => {
     expect(routeResponse.status).toBe(401);
     await expect(routeResponse.json()).resolves.toEqual({ code: 'CUSTOM_DENY' });
 
-    const actionWrapped = withAuthz(
-      async (value: string): Promise<string> => value,
-      {
-        engine,
-        action: 'post:read',
-        getPrincipal: async () => ({ id: 'u1', type: 'user', tenantId: 't1' }),
-        getResource: async () => ({ type: 'post', id: 'p1' }),
-      },
-    );
+    const actionWrapped = withAuthz(async (value: string): Promise<string> => value, {
+      engine,
+      action: 'post:read',
+      getPrincipal: async () => ({ id: 'u1', type: 'user', tenantId: 't1' }),
+      getResource: async () => ({ type: 'post', id: 'p1' }),
+    });
 
     await expect(actionWrapped('x')).rejects.toBeInstanceOf(MissingTenantError);
   });
@@ -123,15 +122,12 @@ describe('withAuthz', () => {
       batchAuthorize: async (): Promise<Decision[]> => [],
     };
 
-    const wrapped = withAuthz(
-      async (value: string): Promise<string> => value,
-      {
-        engine,
-        action: 'post:delete',
-        getPrincipal: async () => ({ id: 'u1', type: 'user', tenantId: 't1' }),
-        getResource: async () => ({ type: 'post', id: 'p1' }),
-      },
-    );
+    const wrapped = withAuthz(async (value: string): Promise<string> => value, {
+      engine,
+      action: 'post:delete',
+      getPrincipal: async () => ({ id: 'u1', type: 'user', tenantId: 't1' }),
+      getResource: async () => ({ type: 'post', id: 'p1' }),
+    });
 
     await expect(wrapped('value')).rejects.toBeInstanceOf(AuthzDeniedError);
   });

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import type { PolicySet } from '@acx/policy-dsl';
+import type { PolicySet } from '@hexmon_tech/policy-dsl';
 
 import { compilePolicySet, matchesAction, matchesResourceType } from '../src/compile';
 import { compileFieldSelectors } from '../src/fields/compileSelectors';

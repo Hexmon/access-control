@@ -30,11 +30,26 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run tests
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm -r lint
+
+      - name: Typecheck
+        run: pnpm -r typecheck
+
+      - name: Test
         run: pnpm -r test
 
-      - name: Run build
+      - name: Build
         run: pnpm -r build
+
+      - name: Pack check
+        run: pnpm -r pack:check
+
+      - name: Smoke checks
+        run: pnpm smoke:check
 
       - name: Changeset status
         run: pnpm changeset status

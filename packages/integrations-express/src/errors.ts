@@ -1,9 +1,4 @@
-import {
-  AcxError,
-  EngineError,
-  InvalidPolicyError,
-  MissingTenantError,
-} from '@acx/core';
+import { AcxError, EngineError, InvalidPolicyError, MissingTenantError } from '@hexmon_tech/core';
 
 import type { AuthzErrorBody, AuthzErrorHandlerOptions, ExpressErrorMiddleware } from './types';
 
@@ -14,6 +9,8 @@ export function createAuthzErrorHandler(
   const missingTenantStatus = options.missingTenantStatus ?? 400;
 
   return (error, _req, res, _next): void => {
+    void _req;
+    void _next;
     const mapped = mapError(error, {
       missingTenantStatus,
       exposeMessages: options.exposeMessages ?? false,

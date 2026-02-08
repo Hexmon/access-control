@@ -1,9 +1,4 @@
-import type {
-  PolicyConstraints,
-  PolicyRule,
-  PolicySet,
-  RoleDefinition,
-} from './types';
+import type { PolicyConstraints, PolicyRule, PolicySet, RoleDefinition } from './types';
 
 /** Fluent builder for PolicySet documents. */
 export interface PolicySetBuilder {

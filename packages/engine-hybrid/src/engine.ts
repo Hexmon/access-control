@@ -4,11 +4,10 @@ import type {
   AuthorizationOptions,
   Decision,
   DecisionMeta,
-  Obligation,
   Reason,
-} from '@acx/core';
-import { EngineError } from '@acx/core';
-import type { RebacAdapter, RebacCheckResult } from '@acx/engine-rebac';
+} from '@hexmon_tech/core';
+import { EngineError } from '@hexmon_tech/core';
+import type { RebacAdapter, RebacCheckResult } from '@hexmon_tech/engine-rebac';
 
 import { isRebacEnabledFor, type RebacEnabledActionsByResourceType } from './match';
 
@@ -68,10 +67,10 @@ export class HybridEngine implements AuthorizationEngine {
     const embeddedDecisions = await this.embeddedEngine.batchAuthorize(inputs, options);
 
     if (embeddedDecisions.length !== inputs.length) {
-      throw new EngineError(
-        'Embedded engine returned mismatched batch size.',
-        { expected: inputs.length, actual: embeddedDecisions.length },
-      );
+      throw new EngineError('Embedded engine returned mismatched batch size.', {
+        expected: inputs.length,
+        actual: embeddedDecisions.length,
+      });
     }
 
     const rebacResults = new Map<number, RebacCheckResult>();

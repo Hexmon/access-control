@@ -3,13 +3,13 @@ import type {
   AuthorizationInput,
   AuthorizationOptions,
   Decision,
-} from '@acx/core';
+} from '@hexmon_tech/core';
 import type {
   RebacAdapter,
   RebacCheckInput,
   RebacCheckResult,
   RelationshipTuple,
-} from '@acx/engine-rebac';
+} from '@hexmon_tech/engine-rebac';
 import { describe, expect, it, vi } from 'vitest';
 
 import { HybridEngine } from '../src/engine';
@@ -25,9 +25,7 @@ function createEmbeddedBatchMock(): {
         reasons: [
           {
             code:
-              input.action.name === 'doc:blocked-by-embedded'
-                ? 'EMBEDDED_DENY'
-                : 'EMBEDDED_ALLOW',
+              input.action.name === 'doc:blocked-by-embedded' ? 'EMBEDDED_DENY' : 'EMBEDDED_ALLOW',
             message: 'embedded',
           },
         ],

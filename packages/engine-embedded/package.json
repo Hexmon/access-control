@@ -1,5 +1,5 @@
 {
-  "name": "@acx/engine-embedded",
+  "name": "@hexmon_tech/engine-embedded",
   "version": "0.0.0",
   "description": "acx engine-embedded package.",
   "license": "MIT",
@@ -23,15 +23,17 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@acx/compiler": "workspace:*",
-    "@acx/core": "workspace:*",
-    "@acx/policy-dsl": "workspace:*"
+    "@hexmon_tech/compiler": "workspace:*",
+    "@hexmon_tech/core": "workspace:*",
+    "@hexmon_tech/policy-dsl": "workspace:*"
   },
   "scripts": {
     "build": "tsup",
     "lint": "eslint src --max-warnings=0",
     "test": "vitest run --passWithNoTests",
-    "bench": "node bench/run.mjs"
+    "bench": "node bench/run.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
   "author": "ACX Authors",
   "keywords": [

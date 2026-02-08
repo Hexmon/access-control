@@ -1,5 +1,5 @@
 {
-  "name": "@acx/cli",
+  "name": "@hexmon_tech/cli",
   "version": "0.0.0",
   "description": "acx cli package.",
   "license": "MIT",
@@ -26,16 +26,18 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@acx/compiler": "workspace:*",
-    "@acx/core": "workspace:*",
-    "@acx/engine-embedded": "workspace:*",
-    "@acx/policy-dsl": "workspace:*",
+    "@hexmon_tech/compiler": "workspace:*",
+    "@hexmon_tech/core": "workspace:*",
+    "@hexmon_tech/engine-embedded": "workspace:*",
+    "@hexmon_tech/policy-dsl": "workspace:*",
     "commander": "^12.1.0"
   },
   "scripts": {
     "build": "tsup",
     "lint": "eslint src --max-warnings=0",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
   "author": "ACX Authors",
   "keywords": [

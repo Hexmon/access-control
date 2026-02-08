@@ -1,4 +1,4 @@
-import type { PolicySet, PolicyEffect, TenantScope } from '@acx/policy-dsl';
+import type { PolicySet, PolicyEffect, TenantScope } from '@hexmon_tech/policy-dsl';
 
 import { evaluateCondition } from './conditions/eval';
 import type {
@@ -128,7 +128,10 @@ export function matchesAction(action: string, matchers: ActionMatcher[]): boolea
 }
 
 /** Match a concrete resource type against matchers. */
-export function matchesResourceType(resourceType: string, matchers: ResourceTypeMatcher[]): boolean {
+export function matchesResourceType(
+  resourceType: string,
+  matchers: ResourceTypeMatcher[],
+): boolean {
   return matchers.some((matcher) => {
     if (matcher.type === 'any') {
       return true;
@@ -192,7 +195,9 @@ function detectConflicts(rules: RuleMeta[]): Diagnostic[] {
         continue;
       }
 
-      if (!hasOverlap(ruleA.resourceTypeMatchers, ruleB.resourceTypeMatchers, overlapResourceTypes)) {
+      if (
+        !hasOverlap(ruleA.resourceTypeMatchers, ruleB.resourceTypeMatchers, overlapResourceTypes)
+      ) {
         continue;
       }
 
@@ -245,7 +250,9 @@ function detectUnreachable(rules: RuleMeta[]): Diagnostic[] {
         continue;
       }
 
-      if (!hasOverlap(higher.resourceTypeMatchers, lower.resourceTypeMatchers, overlapResourceTypes)) {
+      if (
+        !hasOverlap(higher.resourceTypeMatchers, lower.resourceTypeMatchers, overlapResourceTypes)
+      ) {
         continue;
       }
 
@@ -261,11 +268,7 @@ function detectUnreachable(rules: RuleMeta[]): Diagnostic[] {
   return diagnostics;
 }
 
-function hasOverlap<T>(
-  left: T[],
-  right: T[],
-  overlaps: (a: T, b: T) => boolean,
-): boolean {
+function hasOverlap<T>(left: T[], right: T[], overlaps: (a: T, b: T) => boolean): boolean {
   for (const item of left) {
     for (const other of right) {
       if (overlaps(item, other)) {

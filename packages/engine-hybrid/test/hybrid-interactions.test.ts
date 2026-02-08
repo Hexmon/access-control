@@ -3,13 +3,13 @@ import type {
   AuthorizationInput,
   AuthorizationOptions,
   Decision,
-} from '@acx/core';
+} from '@hexmon_tech/core';
 import type {
   RebacAdapter,
   RebacCheckInput,
   RebacCheckResult,
   RelationshipTuple,
-} from '@acx/engine-rebac';
+} from '@hexmon_tech/engine-rebac';
 import { describe, expect, it, vi } from 'vitest';
 
 import { HybridEngine } from '../src/engine';
@@ -38,7 +38,8 @@ function createEmbeddedMock(result: Decision): {
   batchAuthorize: ReturnType<typeof vi.fn>;
 } {
   const authorize = vi.fn(
-    async (_input: AuthorizationInput, _options?: AuthorizationOptions): Promise<Decision> => result,
+    async (_input: AuthorizationInput, _options?: AuthorizationOptions): Promise<Decision> =>
+      result,
   );
   const batchAuthorize = vi.fn(
     async (inputs: AuthorizationInput[]): Promise<Decision[]> => inputs.map(() => result),

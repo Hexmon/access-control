@@ -38,9 +38,9 @@ describe('test command', () => {
               id: 'allow-read',
               effect: 'allow',
               actions: ['doc:read'],
-              resourceTypes: ['doc']
-            }
-          ]
+              resourceTypes: ['doc'],
+            },
+          ],
         },
         null,
         2,
@@ -57,9 +57,9 @@ describe('test command', () => {
             principal: { id: 'u1', type: 'user', tenantId: 't1' },
             resource: { type: 'doc', id: 'd1' },
             action: { name: 'doc:read' },
-            context: { tenantId: 't1' }
+            context: { tenantId: 't1' },
           },
-          expectedAllow: false
+          expectedAllow: false,
         },
         null,
         2,

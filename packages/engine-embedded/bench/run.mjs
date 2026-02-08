@@ -1,4 +1,4 @@
-import { compilePolicySet } from '@acx/compiler';
+import { compilePolicySet } from '@hexmon_tech/compiler';
 
 const SINGLE_ITERATIONS = 3000;
 const BATCH_ITERATIONS_SMALL = 500;
@@ -200,7 +200,7 @@ async function main() {
     ({ EmbeddedEngine } = await import('../dist/index.mjs'));
   } catch (error) {
     process.stderr.write(
-      'Could not import ../dist/index.mjs. Build first with: pnpm --filter @acx/engine-embedded build\n',
+      'Could not import ../dist/index.mjs. Build first with: pnpm --filter @hexmon_tech/engine-embedded build\n',
     );
     process.exitCode = 1;
     return;

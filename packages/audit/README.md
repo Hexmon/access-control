@@ -1,15 +1,44 @@
-# @acx/audit
+# @hexmon_tech/audit
 
-Part of the ACX access-control monorepo.
+Audit event contracts, sinks, batching logger, and role-assignment constraint checks.
 
 ## Install
 
-`pnpm add @acx/audit`
+```bash
+pnpm add @hexmon_tech/audit
+```
 
-## Build
+## Minimal Usage
 
-`pnpm --filter @acx/audit build`
+```ts
+import { ConsoleSink, BatchingSink, validateRoleAssignment } from '@hexmon_tech/audit';
 
-## Test
+const sink = new BatchingSink(new ConsoleSink(), { maxBatchSize: 50, flushIntervalMs: 250 });
 
-`pnpm --filter @acx/audit test`
+const result = await validateRoleAssignment({
+  tenantId: 'tenant-a',
+  userId: 'u1',
+  role: 'PaymentApprover',
+  policyConstraints,
+  roleDirectory,
+});
+```
+
+## API Overview
+
+- Events: `AuditEvent` union + typed event payloads
+- Logging: `AuditSink`, `ConsoleSink`, `BatchingSink`
+- Constraints: `RoleDirectory`, `validateRoleAssignment`
+
+## Compatibility
+
+- Node `>=18`
+- Storage-agnostic interfaces (no DB implementation bundled)
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/audit typecheck
+pnpm --filter @hexmon_tech/audit test
+pnpm --filter @hexmon_tech/audit build
+```

@@ -1,5 +1,5 @@
-import type { Action, Decision } from '@acx/core';
-import { AcxError, MissingTenantError } from '@acx/core';
+import type { Action, Decision } from '@hexmon_tech/core';
+import { AcxError, MissingTenantError } from '@hexmon_tech/core';
 
 import type { RouteHandler, ServerActionHandler, WithAuthzConfig } from './types';
 
@@ -28,7 +28,9 @@ export function withAuthz<TArgs extends unknown[], TResult>(
   config: WithAuthzConfig<TArgs>,
 ): (...args: TArgs) => Promise<TResult>;
 export function withAuthz<TArgs extends unknown[], TResult>(
-  handler: ((...args: TArgs) => TResult | Promise<TResult>) | ((...args: TArgs) => Response | Promise<Response>),
+  handler:
+    | ((...args: TArgs) => TResult | Promise<TResult>)
+    | ((...args: TArgs) => Response | Promise<Response>),
   config: WithAuthzConfig<TArgs>,
 ): (...args: TArgs) => Promise<TResult | Response> {
   return async (...args: TArgs): Promise<TResult | Response> => {
@@ -37,9 +39,7 @@ export function withAuthz<TArgs extends unknown[], TResult>(
       const resource = await config.getResource(...args);
       const context = config.getContext ? await config.getContext(...args) : undefined;
       const actionName =
-        typeof config.action === 'function'
-          ? await config.action(...args)
-          : config.action;
+        typeof config.action === 'function' ? await config.action(...args) : config.action;
       const fields = config.getFields ? await config.getFields(...args) : undefined;
 
       const action: Action = {

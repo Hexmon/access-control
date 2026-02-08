@@ -17,7 +17,9 @@ describe('init command', () => {
 
     await expect(access(path.join(tempDir, 'policy.json'))).resolves.not.toThrow();
     await expect(access(path.join(tempDir, 'policy-tests/policy.json'))).resolves.not.toThrow();
-    await expect(access(path.join(tempDir, 'policy-tests/tests/allow-read.json'))).resolves.not.toThrow();
+    await expect(
+      access(path.join(tempDir, 'policy-tests/tests/allow-read.json')),
+    ).resolves.not.toThrow();
   });
 
   it('fails when files exist and force is false', async () => {

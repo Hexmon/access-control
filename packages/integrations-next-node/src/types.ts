@@ -4,7 +4,7 @@ import type {
   Decision,
   Principal,
   Resource,
-} from '@acx/core';
+} from '@hexmon_tech/core';
 
 /** Generic route-handler shape compatible with Node runtime route handlers. */
 export type RouteHandler<TArgs extends unknown[] = [Request]> = (

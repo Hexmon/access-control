@@ -1,4 +1,4 @@
-import type { Resource } from '@acx/core';
+import type { Resource } from '@hexmon_tech/core';
 import { SetMetadata } from '@nestjs/common';
 import type { ExecutionContext } from '@nestjs/common';
 
@@ -15,9 +15,7 @@ export interface AuthzActionMetadata {
 }
 
 /** Resource resolver for the current request context. */
-export type AuthzResourceResolver = (
-  context: ExecutionContext,
-) => Resource | Promise<Resource>;
+export type AuthzResourceResolver = (context: ExecutionContext) => Resource | Promise<Resource>;
 
 /** Metadata payload for resource decorators. */
 export interface AuthzResourceMetadata {
@@ -26,7 +24,10 @@ export interface AuthzResourceMetadata {
 }
 
 /** Declare authorization action metadata for a route handler/class. */
-export function AuthzAction(actionName: string, fields?: string[]): MethodDecorator & ClassDecorator {
+export function AuthzAction(
+  actionName: string,
+  fields?: string[],
+): MethodDecorator & ClassDecorator {
   const metadata: AuthzActionMetadata = {
     actionName,
     ...(fields && fields.length > 0 ? { fields } : {}),

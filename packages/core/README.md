@@ -1,15 +1,39 @@
-# @acx/core
+# @hexmon_tech/core
 
-Part of the ACX access-control monorepo.
+Core public contracts for authorization inputs/decisions, engine interfaces, stable error codes, and helper utilities.
 
 ## Install
 
-`pnpm add @acx/core`
+```bash
+pnpm add @hexmon_tech/core
+```
 
-## Build
+## Minimal Usage
 
-`pnpm --filter @acx/core build`
+```ts
+import { createTraceId, normalizeFields, assertTenant } from '@hexmon_tech/core';
 
-## Test
+const traceId = createTraceId();
+const fields = normalizeFields(['title', 'title', 'meta']);
+const tenantId = assertTenant({ principal: { tenantId: 'tenant-a' } }, 'required');
+```
 
-`pnpm --filter @acx/core test`
+## API Overview
+
+- Types: `AuthorizationInput`, `Decision`, `AuthorizationEngine`, `Context`, `Reason`, `Obligation`
+- Errors: `AcxError`, `MissingTenantError`, `InvalidPolicyError`, `EngineError`
+- Capabilities: `Capability`, `CapabilitySet`, `assertCapability`
+- Helpers: `createTraceId`, `normalizeFields`, `assertTenant`
+
+## Compatibility
+
+- Node `>=18`
+- ESM + CJS + `.d.ts`
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/core typecheck
+pnpm --filter @hexmon_tech/core test
+pnpm --filter @hexmon_tech/core build
+```

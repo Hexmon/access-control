@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { compilePolicySet } from '../../compiler/src/compile';
-import type { PolicySet } from '@acx/policy-dsl';
+import type { PolicySet } from '@hexmon_tech/policy-dsl';
 
 import { EmbeddedEngine } from '../src/engine';
 
@@ -55,7 +55,11 @@ describe('batchAuthorize parity', () => {
 
     expect(batch).toHaveLength(single.length);
 
-    const shape = (decision: { allow: boolean; reasons: { code: string }[]; obligations: unknown[] }) => ({
+    const shape = (decision: {
+      allow: boolean;
+      reasons: { code: string }[];
+      obligations: unknown[];
+    }) => ({
       allow: decision.allow,
       reasonCodes: decision.reasons.map((reason) => reason.code),
       obligations: decision.obligations,

@@ -16,7 +16,7 @@ import {
   InvalidPolicyError,
   MissingTenantError,
   normalizeFields,
-} from '@acx/core';
+} from '@hexmon_tech/core';
 
 import {
   AUTHZ_ACTION_METADATA,
@@ -64,9 +64,7 @@ export class AuthzGuard implements CanActivate {
       const configuredContext = this.config?.getContext
         ? await this.config.getContext(context)
         : undefined;
-      const configuredFields = this.config?.getFields
-        ? await this.config.getFields(context)
-        : [];
+      const configuredFields = this.config?.getFields ? await this.config.getFields(context) : [];
       const mergedFields = normalizeFields([...(actionMetadata.fields ?? []), ...configuredFields]);
 
       const decision = await this.engine.authorize({

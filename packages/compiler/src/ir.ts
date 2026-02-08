@@ -1,4 +1,9 @@
-import type { PolicyObligation, PolicyEffect, RoleDefinition, TenantScope } from '@acx/policy-dsl';
+import type {
+  PolicyObligation,
+  PolicyEffect,
+  RoleDefinition,
+  TenantScope,
+} from '@hexmon_tech/policy-dsl';
 
 /** Matchers for action strings with optional wildcard prefixes. */
 export interface ActionMatcher {

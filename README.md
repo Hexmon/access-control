@@ -1,35 +1,39 @@
 # acx
 
-Enterprise-grade access-control tooling for JavaScript/TypeScript.
+Enterprise-grade access-control tooling for JavaScript/TypeScript, published under `@hexmon_tech/*`.
 
 ## Vision
 
-acx provides a cohesive authorization model that supports RBAC, ABAC, contextual checks, task-driven workflows, and field-level controls. The goal is to let teams define policy once and apply it consistently across services, while keeping evaluation fast, testable, and aligned with product intent.
+acx provides one authorization model across RBAC, ABAC, context/workflow checks, field-level controls, and optional relationship-based enforcement.
 
-Note: V1 ships the embedded engine; adapters come later.
+V1 ships the embedded engine first; adapters are layered on top.
 
 ## Packages
 
-- @acx/core
-- @acx/policy-dsl
-- @acx/compiler
-- @acx/engine-embedded
-- @acx/audit
-- @acx/integrations-express
-- @acx/integrations-next-node
-- @acx/integrations-nest
-- @acx/cli
+- [`@hexmon_tech/core`](packages/core): core types, errors, capability flags, helper utilities.
+- [`@hexmon_tech/policy-dsl`](packages/policy-dsl): JSON policy DSL schema, validation, and builder.
+- [`@hexmon_tech/compiler`](packages/compiler): policy compiler to deterministic IR + diagnostics + hashing.
+- [`@hexmon_tech/engine-embedded`](packages/engine-embedded): in-process policy evaluation engine.
+- [`@hexmon_tech/engine-rebac`](packages/engine-rebac): ReBAC adapter contract + in-memory adapter.
+- [`@hexmon_tech/adapter-openfga`](packages/adapter-openfga): OpenFGA adapter skeleton (mockable client contract).
+- [`@hexmon_tech/engine-hybrid`](packages/engine-hybrid): embedded + ReBAC composition engine.
+- [`@hexmon_tech/audit`](packages/audit): audit events, sinks, and role-assignment constraints.
+- [`@hexmon_tech/integrations-express`](packages/integrations-express): Express middleware + error mapper.
+- [`@hexmon_tech/integrations-next-node`](packages/integrations-next-node): Next.js Node runtime wrappers.
+- [`@hexmon_tech/integrations-nest`](packages/integrations-nest): Nest decorators/guard/module.
+- [`@hexmon_tech/cli`](packages/cli): policy devtools CLI (`acx`).
 
-## Quickstart
-
-Coming soon.
-
-## Development
+## Repository Verification
 
 ```bash
-pnpm install
-pnpm build
-pnpm test
+pnpm install --frozen-lockfile
+pnpm format:check
+pnpm -r lint
+pnpm -r typecheck
+pnpm -r test
+pnpm -r build
+pnpm -r pack:check
+pnpm smoke:check
 ```
 
 ## Changesets

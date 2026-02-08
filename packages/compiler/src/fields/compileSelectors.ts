@@ -1,4 +1,4 @@
-import type { FieldSelection } from '@acx/policy-dsl';
+import type { FieldSelection } from '@hexmon_tech/policy-dsl';
 
 import type { CompiledFieldSelectors, FieldSelectorMatcher } from '../ir';
 
@@ -10,9 +10,10 @@ export interface FieldSelectorDiagnostic {
 }
 
 /** Compile field selectors into matchers and normalized lists. */
-export function compileFieldSelectors(
-  fields?: FieldSelection,
-): { compiled: CompiledFieldSelectors; diagnostics: FieldSelectorDiagnostic[] } {
+export function compileFieldSelectors(fields?: FieldSelection): {
+  compiled: CompiledFieldSelectors;
+  diagnostics: FieldSelectorDiagnostic[];
+} {
   const diagnostics: FieldSelectorDiagnostic[] = [];
 
   const allow = compileSelectorList(fields?.allow ?? [], diagnostics);

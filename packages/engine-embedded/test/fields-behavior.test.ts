@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { compilePolicySet } from '../../compiler/src/compile';
-import type { PolicySet } from '@acx/policy-dsl';
+import type { PolicySet } from '@hexmon_tech/policy-dsl';
 
 import { EmbeddedEngine } from '../src/engine';
 
@@ -116,9 +116,7 @@ describe('embedded field behavior', () => {
 
     expect(decision.allow).toBe(true);
     expect(decision.obligations).toEqual(
-      expect.arrayContaining([
-        { type: 'omitFields', payload: { fields: ['title'] } },
-      ]),
+      expect.arrayContaining([{ type: 'omitFields', payload: { fields: ['title'] } }]),
     );
   });
 });

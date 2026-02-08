@@ -1,11 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import type { PolicyConstraints } from '@acx/policy-dsl';
+import type { PolicyConstraints } from '@hexmon_tech/policy-dsl';
 
-import {
-  type RoleDirectory,
-  validateRoleAssignment,
-} from '../src/constraints';
+import { type RoleDirectory, validateRoleAssignment } from '../src/constraints';
 
 interface DirectoryState {
   rolesByUser: Record<string, string[]>;

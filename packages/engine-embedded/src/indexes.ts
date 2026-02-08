@@ -1,5 +1,5 @@
-import type { TenantScope } from '@acx/policy-dsl';
-import type { CompiledRule } from '@acx/compiler';
+import type { TenantScope } from '@hexmon_tech/policy-dsl';
+import type { CompiledRule } from '@hexmon_tech/compiler';
 
 interface ActionIndex {
   exact: Map<string, CompiledRule[]>;
@@ -77,10 +77,7 @@ function createResourceIndex(): ResourceIndex {
   };
 }
 
-function getOrCreateActionIndex(
-  map: Map<string, ActionIndex>,
-  key: string,
-): ActionIndex {
+function getOrCreateActionIndex(map: Map<string, ActionIndex>, key: string): ActionIndex {
   const existing = map.get(key);
   if (existing) {
     return existing;

@@ -1,5 +1,5 @@
 {
-  "name": "@acx/engine-rebac",
+  "name": "@hexmon_tech/engine-rebac",
   "version": "0.0.0",
   "description": "acx ReBAC engine interfaces and adapters.",
   "license": "MIT",
@@ -25,7 +25,9 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint src --max-warnings=0",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
   "author": "ACX Authors",
   "keywords": [

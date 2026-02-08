@@ -1,9 +1,9 @@
 import path from 'node:path';
 
-import { stableStringify } from '@acx/compiler';
-import { compilePolicySet } from '@acx/compiler';
-import { EmbeddedEngine } from '@acx/engine-embedded';
-import type { AuthorizationInput, Obligation } from '@acx/core';
+import { stableStringify } from '@hexmon_tech/compiler';
+import { compilePolicySet } from '@hexmon_tech/compiler';
+import { EmbeddedEngine } from '@hexmon_tech/engine-embedded';
+import type { AuthorizationInput, Obligation } from '@hexmon_tech/core';
 
 import { listFilesRecursive, readJson, resolvePath } from '../fs';
 import type { CommandContext } from './shared';
@@ -74,7 +74,9 @@ export async function runTestCommand(options: TestCommandOptions): Promise<numbe
     }
 
     failed += 1;
-    options.context.io.err(`FAIL ${testCase.name} (${path.relative(options.context.cwd, caseFile)})`);
+    options.context.io.err(
+      `FAIL ${testCase.name} (${path.relative(options.context.cwd, caseFile)})`,
+    );
     options.context.io.err(`  ${result.message}`);
   }
 

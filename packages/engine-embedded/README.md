@@ -1,15 +1,42 @@
-# @acx/engine-embedded
+# @hexmon_tech/engine-embedded
 
-Part of the ACX access-control monorepo.
+In-process authorization engine for compiled policies with deny-by-default, deny-overrides-allow, tracing, and TTL cache.
 
 ## Install
 
-`pnpm add @acx/engine-embedded`
+```bash
+pnpm add @hexmon_tech/engine-embedded
+```
 
-## Build
+## Minimal Usage
 
-`pnpm --filter @acx/engine-embedded build`
+```ts
+import { compilePolicySet } from '@hexmon_tech/compiler';
+import { EmbeddedEngine } from '@hexmon_tech/engine-embedded';
 
-## Test
+const { ir } = compilePolicySet(policySet);
+const engine = new EmbeddedEngine({ mode: 'multi-tenant' });
+engine.setPolicy(ir);
 
-`pnpm --filter @acx/engine-embedded test`
+const decision = await engine.authorize(input);
+```
+
+## API Overview
+
+- Class: `EmbeddedEngine`
+- Methods: `setPolicy`, `authorize`, `batchAuthorize`, `explain`, `getMetrics`
+- Options: `mode`, `fieldViolation`, cache config (`enabled`, `maxSize`, `ttlMs`)
+
+## Compatibility
+
+- Node `>=18`
+- Deterministic candidate ordering and cache invalidation on `setPolicy`
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/engine-embedded typecheck
+pnpm --filter @hexmon_tech/engine-embedded test
+pnpm --filter @hexmon_tech/engine-embedded build
+node packages/engine-embedded/bench/run.mjs
+```

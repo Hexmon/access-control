@@ -1,15 +1,41 @@
-# @acx/policy-dsl
+# @hexmon_tech/policy-dsl
 
-Part of the ACX access-control monorepo.
+Policy DSL package for JSON schema validation and builder APIs.
 
 ## Install
 
-`pnpm add @acx/policy-dsl`
+```bash
+pnpm add @hexmon_tech/policy-dsl
+```
 
-## Build
+## Minimal Usage
 
-`pnpm --filter @acx/policy-dsl build`
+```ts
+import { policySet, validatePolicySet } from '@hexmon_tech/policy-dsl';
 
-## Test
+const policy = policySet('1.0.0')
+  .rule({ id: 'allow-read', effect: 'allow', actions: ['post:read'], resourceTypes: ['post'] })
+  .build();
 
-`pnpm --filter @acx/policy-dsl test`
+const result = validatePolicySet(policy);
+```
+
+## API Overview
+
+- Types: `PolicySet`, `PolicyRule`, `Condition`, `RoleDefinition`, `PolicyConstraints`
+- Validation: `validatePolicySet(policy)`
+- Builder: `policySet(version).rule(...).role(...).constraints(...).build()`
+- Schema: `policySetSchema`
+
+## Compatibility
+
+- Node `>=18`
+- Pure JSON AST condition language (no JS eval)
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/policy-dsl typecheck
+pnpm --filter @hexmon_tech/policy-dsl test
+pnpm --filter @hexmon_tech/policy-dsl build
+```

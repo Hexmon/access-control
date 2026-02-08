@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-pnpm add -D @acx/cli
+pnpm add -D @hexmon_tech/cli
 ```
 
 ## Commands
@@ -26,6 +26,7 @@ acx validate examples/policies/multi-tenant.policy.json --mode multi-tenant
 ```
 
 Exit codes:
+
 - `0`: valid policy with no compile errors
 - `1`: validation/compile errors
 - `2`: usage errors
@@ -81,6 +82,7 @@ Each test case is a JSON file:
 ```
 
 Fields:
+
 - `name`: case label
 - `input`: `AuthorizationInput`
 - `expectedAllow`: expected decision allow/deny
@@ -103,7 +105,7 @@ policy-tests/
 - run: pnpm install --frozen-lockfile
 - run: pnpm build
 - run: pnpm test
-- run: pnpm --filter @acx/cli build
+- run: pnpm --filter @hexmon_tech/cli build
 - run: pnpm exec acx validate examples/policies/basic.policy.json
 - run: pnpm exec acx test examples/policy-tests/basic
 ```

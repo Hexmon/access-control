@@ -1,13 +1,13 @@
 # Embedded Engine Benchmark
 
-Manual micro-benchmark for `@acx/engine-embedded`.
+Manual micro-benchmark for `@hexmon_tech/engine-embedded`.
 
 ## Run
 
 From repo root:
 
 ```bash
-pnpm --filter @acx/engine-embedded build
+pnpm --filter @hexmon_tech/engine-embedded build
 node packages/engine-embedded/bench/run.mjs
 ```
 

@@ -1,5 +1,5 @@
 {
-  "name": "@acx/engine-hybrid",
+  "name": "@hexmon_tech/engine-hybrid",
   "version": "0.0.0",
   "description": "acx hybrid engine package.",
   "license": "MIT",
@@ -23,13 +23,15 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@acx/core": "workspace:*",
-    "@acx/engine-rebac": "workspace:*"
+    "@hexmon_tech/core": "workspace:*",
+    "@hexmon_tech/engine-rebac": "workspace:*"
   },
   "scripts": {
     "build": "tsup",
     "lint": "eslint src --max-warnings=0",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
   "author": "ACX Authors",
   "keywords": [

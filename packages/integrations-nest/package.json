@@ -1,5 +1,5 @@
 {
-  "name": "@acx/integrations-nest",
+  "name": "@hexmon_tech/integrations-nest",
   "version": "0.0.0",
   "description": "acx integrations-nest package.",
   "license": "MIT",
@@ -23,7 +23,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@acx/core": "workspace:*"
+    "@hexmon_tech/core": "workspace:*"
   },
   "peerDependencies": {
     "@nestjs/common": "^10.0.0",
@@ -40,7 +40,9 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint src --max-warnings=0",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
   "author": "ACX Authors",
   "keywords": [

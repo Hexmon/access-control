@@ -1,4 +1,4 @@
-import type { PolicyConstraints } from '@acx/policy-dsl';
+import type { PolicyConstraints } from '@hexmon_tech/policy-dsl';
 
 /** Read-only role directory used to validate role assignment constraints. */
 export interface RoleDirectory {
@@ -27,9 +27,7 @@ export interface ValidateRoleAssignmentInput {
   roleDirectory: RoleDirectory;
 }
 
-export type ValidateRoleAssignmentResult =
-  | { ok: true }
-  | { ok: false; errors: ConstraintError[] };
+export type ValidateRoleAssignmentResult = { ok: true } | { ok: false; errors: ConstraintError[] };
 
 /** Validate role assignment against configured policy constraints. */
 export async function validateRoleAssignment(
@@ -53,7 +51,13 @@ export async function validateRoleAssignment(
     errors.push(...validateMutuallyExclusive(input.role, assignedSet, constraints));
     errors.push(...validatePrerequisites(input.role, assignedSet, constraints));
     errors.push(
-      ...(await validateMaxRoleHolders(input.role, hasTargetRole, constraints, input.roleDirectory, input.tenantId)),
+      ...(await validateMaxRoleHolders(
+        input.role,
+        hasTargetRole,
+        constraints,
+        input.roleDirectory,
+        input.tenantId,
+      )),
     );
 
     if (errors.length > 0) {

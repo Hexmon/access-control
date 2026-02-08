@@ -1,41 +1,41 @@
-# @acx/integrations-nest
+# @hexmon_tech/integrations-nest
 
-NestJS decorators and guard for `@acx/*` authorization engines.
+NestJS decorators, guard, and module wiring for authorization enforcement.
 
-## Usage
+## Install
+
+```bash
+pnpm add @hexmon_tech/integrations-nest
+```
+
+## Minimal Usage
 
 ```ts
-import { Controller, Get, Param, UseGuards } from '@nestjs/common';
-import {
-  AuthzAction,
-  AuthzGuard,
-  AuthzModule,
-  AuthzResource,
-} from '@acx/integrations-nest';
+import { UseGuards } from '@nestjs/common';
+import { AuthzAction, AuthzGuard, AuthzResource } from '@hexmon_tech/integrations-nest';
 
-@Controller('posts')
 @UseGuards(AuthzGuard)
-export class PostController {
-  @Get(':id')
-  @AuthzAction('post:read')
-  @AuthzResource('post', (ctx) => {
-    const req = ctx.switchToHttp().getRequest();
-    return { type: 'post', id: req.params.id };
-  })
-  getPost(@Param('id') _id: string) {
-    return { ok: true };
-  }
-}
+@AuthzAction('post:read')
+@AuthzResource('post', (ctx) => ({ type: 'post', id: ctx.switchToHttp().getRequest().params.id }))
+class PostController {}
+```
 
-// App module
-AuthzModule.forRoot({
-  engine,
-  principalResolver: {
-    resolve: (ctx) => ctx.switchToHttp().getRequest().user,
-  },
-  config: {
-    missingTenantStatus: 401,
-    getContext: (ctx) => ({ tenantId: ctx.switchToHttp().getRequest().headers['x-tenant-id'] }),
-  },
-});
+## API Overview
+
+- Decorators: `@AuthzAction`, `@AuthzResource`
+- Guard: `AuthzGuard`
+- Module: `AuthzModule.forRoot(...)`
+- Tokens/interfaces: `AUTHZ_ENGINE`, `PrincipalResolver`, `AuthzConfig`
+
+## Compatibility
+
+- Node `>=18`
+- Peer dependencies: NestJS core/common/platform-express + reflect-metadata
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/integrations-nest typecheck
+pnpm --filter @hexmon_tech/integrations-nest test
+pnpm --filter @hexmon_tech/integrations-nest build
 ```

@@ -1,15 +1,37 @@
-# @acx/compiler
+# @hexmon_tech/compiler
 
-Part of the ACX access-control monorepo.
+Compiles policy DSL into deterministic IR, performs semantic diagnostics, and computes stable hashes.
 
 ## Install
 
-`pnpm add @acx/compiler`
+```bash
+pnpm add @hexmon_tech/compiler
+```
 
-## Build
+## Minimal Usage
 
-`pnpm --filter @acx/compiler build`
+```ts
+import { compilePolicySet } from '@hexmon_tech/compiler';
 
-## Test
+const { ir, diagnostics } = compilePolicySet(policySet, { mode: 'multi-tenant' });
+```
 
-`pnpm --filter @acx/compiler test`
+## API Overview
+
+- Compile: `compilePolicySet(policy, options)`
+- Diagnostics: conflict/unreachable/multi-tenant scoping/field selector checks
+- Conditions: `evaluateCondition` + safe `resolveRef`
+- Hashing: `stableStringify`, `sha256`, `hashObject`
+
+## Compatibility
+
+- Node `>=18`
+- No dynamic code execution
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/compiler typecheck
+pnpm --filter @hexmon_tech/compiler test
+pnpm --filter @hexmon_tech/compiler build
+```

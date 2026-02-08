@@ -1,46 +1,42 @@
-# @acx/integrations-next-node
+# @hexmon_tech/integrations-next-node
 
 Authorization wrappers for Next.js Node runtime route handlers and server actions.
 
-`@acx/integrations-next-node` is **not** intended for Edge middleware/runtime.
+## Install
 
-## App Router Route Handler (Node runtime)
-
-```ts
-import { withAuthz } from '@acx/integrations-next-node';
-
-export const POST = withAuthz(
-  async (req: Request) => {
-    return new Response(null, { status: 204 });
-  },
-  {
-    engine,
-    action: 'post:update',
-    getPrincipal: async (req) => getPrincipalFromSession(req),
-    getResource: async (_req) => ({ type: 'post', id: 'post-1' }),
-    getContext: async (req) => ({ tenantId: req.headers.get('x-tenant-id') ?? undefined }),
-  },
-);
+```bash
+pnpm add @hexmon_tech/integrations-next-node
 ```
 
-## Server Action (Node runtime)
+## Minimal Usage
 
 ```ts
-'use server';
+import { withAuthz } from '@hexmon_tech/integrations-next-node';
 
-import { withAuthz } from '@acx/integrations-next-node';
+export const POST = withAuthz(async (req: Request) => new Response(null, { status: 204 }), {
+  engine,
+  action: 'post:update',
+  getPrincipal: async (req) => principalFromRequest(req),
+  getResource: async () => ({ type: 'post', id: 'p1' }),
+  getContext: async (req) => ({ tenantId: req.headers.get('x-tenant-id') ?? undefined }),
+});
+```
 
-export const updatePostTitle = withAuthz(
-  async (postId: string, title: string) => {
-    await db.post.update({ where: { id: postId }, data: { title } });
-    return { ok: true };
-  },
-  {
-    engine,
-    action: 'post:update',
-    getPrincipal: async () => getPrincipalFromSession(),
-    getResource: async (postId) => ({ type: 'post', id: postId }),
-    getContext: async () => ({ tenantId: 'tenant-1' }),
-  },
-);
+## API Overview
+
+- Wrapper: `withAuthz(handler, config)`
+- Errors: `AuthzDeniedError`, `NotImplementedError`
+- Helper placeholder: `getPrincipalFromRequest`
+
+## Compatibility
+
+- Node `>=18`
+- Next.js Node runtime only (not Edge runtime)
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/integrations-next-node typecheck
+pnpm --filter @hexmon_tech/integrations-next-node test
+pnpm --filter @hexmon_tech/integrations-next-node build
 ```

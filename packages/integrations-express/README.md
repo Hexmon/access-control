@@ -1,19 +1,17 @@
-# @acx/integrations-express
+# @hexmon_tech/integrations-express
 
-Express middleware helpers for `@acx/*` authorization engines.
+Express middleware and error handling helpers for authorization checks.
 
-## Usage
+## Install
+
+```bash
+pnpm add @hexmon_tech/integrations-express
+```
+
+## Minimal Usage
 
 ```ts
-import express from 'express';
-import { EmbeddedEngine } from '@acx/engine-embedded';
-import {
-  createAuthzErrorHandler,
-  requireAuthz,
-} from '@acx/integrations-express';
-
-const app = express();
-const engine = new EmbeddedEngine({ mode: 'multi-tenant' });
+import { requireAuthz, createAuthzErrorHandler } from '@hexmon_tech/integrations-express';
 
 app.patch(
   '/posts/:id',
@@ -22,13 +20,29 @@ app.patch(
     action: 'post:update',
     principal: (req) => req.user,
     resource: (req) => ({ type: 'post', id: req.params.id }),
-    fields: (req) => ['title'],
     context: (req) => ({ tenantId: req.headers['x-tenant-id'] as string }),
   }),
-  (_req, res) => {
-    res.status(204).end();
-  },
+  handler,
 );
 
 app.use(createAuthzErrorHandler({ missingTenantStatus: 401 }));
+```
+
+## API Overview
+
+- Middleware: `requireAuthz(config)`
+- Error mapping: `createAuthzErrorHandler(options)`
+- Request augmentation: `req.authzDecision?: Decision`
+
+## Compatibility
+
+- Node `>=18`
+- Peer dependency: `express`
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/integrations-express typecheck
+pnpm --filter @hexmon_tech/integrations-express test
+pnpm --filter @hexmon_tech/integrations-express build
 ```

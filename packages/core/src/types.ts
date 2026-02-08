@@ -201,7 +201,10 @@ export interface AuthorizationEngine {
   batchAuthorize(inputs: AuthorizationInput[], options?: AuthorizationOptions): Promise<Decision[]>;
 
   listObjects?(input: ListObjectsInput, options?: AuthorizationOptions): Promise<ListObjectsResult>;
-  listSubjects?(input: ListSubjectsInput, options?: AuthorizationOptions): Promise<ListSubjectsResult>;
+  listSubjects?(
+    input: ListSubjectsInput,
+    options?: AuthorizationOptions,
+  ): Promise<ListSubjectsResult>;
   filterQuery?<TQuery = unknown>(
     input: FilterQueryInput<TQuery>,
     options?: AuthorizationOptions,

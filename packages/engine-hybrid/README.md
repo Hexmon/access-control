@@ -1,15 +1,45 @@
-# @acx/engine-hybrid
+# @hexmon_tech/engine-hybrid
 
-Part of the ACX access-control monorepo.
+Hybrid engine that combines embedded decisions with ReBAC object checks.
 
 ## Install
 
-`pnpm add @acx/engine-hybrid`
+```bash
+pnpm add @hexmon_tech/engine-hybrid
+```
 
-## Build
+## Minimal Usage
 
-`pnpm --filter @acx/engine-hybrid build`
+```ts
+import { HybridEngine } from '@hexmon_tech/engine-hybrid';
 
-## Test
+const engine = new HybridEngine({
+  embeddedEngine,
+  rebacAdapter,
+  config: {
+    rebacEnabledActionsByResourceType: {
+      post: ['post:*'],
+      '*': ['file:read'],
+    },
+  },
+});
+```
 
-`pnpm --filter @acx/engine-hybrid test`
+## API Overview
+
+- Class: `HybridEngine`
+- Methods: `authorize`, `batchAuthorize`
+- Match helpers: `matchesActionPattern`, `isRebacEnabledFor`
+
+## Compatibility
+
+- Node `>=18`
+- Embedded engine remains authoritative for global constraints
+
+## Verify
+
+```bash
+pnpm --filter @hexmon_tech/engine-hybrid typecheck
+pnpm --filter @hexmon_tech/engine-hybrid test
+pnpm --filter @hexmon_tech/engine-hybrid build
+```

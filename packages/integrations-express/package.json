@@ -1,5 +1,5 @@
 {
-  "name": "@acx/integrations-express",
+  "name": "@hexmon_tech/integrations-express",
   "version": "0.0.0",
   "description": "acx integrations-express package.",
   "license": "MIT",
@@ -23,12 +23,14 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@acx/core": "workspace:*"
+    "@hexmon_tech/core": "workspace:*"
   },
   "scripts": {
     "build": "tsup",
     "lint": "eslint src --max-warnings=0",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "node ../../scripts/pack/check-package.mjs"
   },
   "author": "ACX Authors",
   "keywords": [

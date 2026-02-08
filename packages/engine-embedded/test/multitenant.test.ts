@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
 import { compilePolicySet } from '../../compiler/src/compile';
-import { ERROR_CODES, MissingTenantError } from '@acx/core';
-import type { PolicySet } from '@acx/policy-dsl';
+import { ERROR_CODES, MissingTenantError } from '@hexmon_tech/core';
+import type { PolicySet } from '@hexmon_tech/policy-dsl';
 
 import { EmbeddedEngine } from '../src/engine';
 

@@ -13,10 +13,7 @@ import type {
 export class InMemoryRebacAdapter implements RebacAdapter {
   private readonly tuples = new Map<string, RelationshipTuple>();
 
-  public async writeTuples(
-    tuples: RelationshipTuple[],
-    options?: RebacCallOptions,
-  ): Promise<void> {
+  public async writeTuples(tuples: RelationshipTuple[], options?: RebacCallOptions): Promise<void> {
     const fallbackTenantId = options?.tenantId;
 
     for (const tuple of tuples) {

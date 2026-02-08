@@ -1,5 +1,10 @@
-import type { AuthorizationEngine, AuthorizationInput, AuthorizationOptions, Decision } from '@acx/core';
-import { MissingTenantError } from '@acx/core';
+import type {
+  AuthorizationEngine,
+  AuthorizationInput,
+  AuthorizationOptions,
+  Decision,
+} from '@hexmon_tech/core';
+import { MissingTenantError } from '@hexmon_tech/core';
 import {
   BadRequestException,
   ForbiddenException,

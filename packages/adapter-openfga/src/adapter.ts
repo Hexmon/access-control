@@ -9,7 +9,7 @@ import type {
   RebacListSubjectsResult,
   RelationshipSubject,
   RelationshipTuple,
-} from '@acx/engine-rebac';
+} from '@hexmon_tech/engine-rebac';
 
 import type { OpenFgaClient } from './client';
 import type {
@@ -36,10 +36,7 @@ export class OpenFgaRebacAdapter implements RebacAdapter {
     this.options = options;
   }
 
-  public async writeTuples(
-    tuples: RelationshipTuple[],
-    options?: RebacCallOptions,
-  ): Promise<void> {
+  public async writeTuples(tuples: RelationshipTuple[], options?: RebacCallOptions): Promise<void> {
     const request: OpenFgaWriteTuplesRequest = {
       ...this.requestContext(options?.tenantId),
       writes: {
@@ -128,10 +125,7 @@ export class OpenFgaRebacAdapter implements RebacAdapter {
 
   private requestContext(
     tenantId?: string,
-  ): Pick<
-    OpenFgaWriteTuplesRequest,
-    'storeId' | 'authorizationModelId' | 'tenantId'
-  > {
+  ): Pick<OpenFgaWriteTuplesRequest, 'storeId' | 'authorizationModelId' | 'tenantId'> {
     const requestContext: Pick<
       OpenFgaWriteTuplesRequest,
       'storeId' | 'authorizationModelId' | 'tenantId'

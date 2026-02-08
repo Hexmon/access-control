@@ -1,4 +1,4 @@
-import Ajv, { type ErrorObject, type ValidateFunction } from 'ajv/dist/2020';
+import Ajv, { type ErrorObject, type ValidateFunction } from 'ajv/dist/2020.js';
 
 import policySetSchema from './schema/policyset.schema.json';
 import type { PolicySet } from './types';
@@ -51,11 +51,7 @@ function formatErrors(errors: ErrorObject[] | null | undefined): ValidationError
     const params = error.params as Record<string, unknown> | undefined;
     let path = error.instancePath || '/';
 
-    if (
-      error.keyword === 'required' &&
-      params &&
-      typeof params['missingProperty'] === 'string'
-    ) {
+    if (error.keyword === 'required' && params && typeof params['missingProperty'] === 'string') {
       const missing = params['missingProperty'];
       const prefix = error.instancePath ? error.instancePath : '';
       path = `${prefix}/${missing}` || `/${missing}`;

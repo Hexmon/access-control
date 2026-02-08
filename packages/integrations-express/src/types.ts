@@ -5,8 +5,9 @@ import type {
   Decision,
   Principal,
   Resource,
-} from '@acx/core';
+} from '@hexmon_tech/core';
 
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace Express {
     interface Request {

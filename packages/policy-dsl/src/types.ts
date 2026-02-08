@@ -9,13 +9,7 @@ export interface Ref {
 /**
  * Allowed values for condition operands.
  */
-export type RefOrValue =
-  | Ref
-  | string
-  | number
-  | boolean
-  | null
-  | Array<RefOrValue>;
+export type RefOrValue = Ref | string | number | boolean | null | Array<RefOrValue>;
 
 /**
  * Logical condition for policy evaluation.

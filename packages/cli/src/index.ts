@@ -25,11 +25,7 @@ export function createProgram(
 ): Command {
   const program = new Command();
 
-  program
-    .name('acx')
-    .description('ACX policy CLI utilities')
-    .showHelpAfterError()
-    .exitOverride();
+  program.name('acx').description('ACX policy CLI utilities').showHelpAfterError().exitOverride();
 
   program
     .command('init')
@@ -68,19 +64,17 @@ export function createProgram(
     .argument('<policyFile>', 'Path to policy JSON file')
     .requiredOption('--out <file>', 'Output TS file path')
     .option('--mode <mode>', 'Compilation mode: single-tenant|multi-tenant', 'single-tenant')
-    .action(
-      async (policyFile: string, options: { out: string; mode: string }): Promise<void> => {
-        const mode = parseMode(options.mode);
-        setExitCode(
-          await runTypesCommand({
-            policyPath: policyFile,
-            outPath: options.out,
-            mode,
-            context,
-          }),
-        );
-      },
-    );
+    .action(async (policyFile: string, options: { out: string; mode: string }): Promise<void> => {
+      const mode = parseMode(options.mode);
+      setExitCode(
+        await runTypesCommand({
+          policyPath: policyFile,
+          outPath: options.out,
+          mode,
+          context,
+        }),
+      );
+    });
 
   program
     .command('test')
@@ -89,10 +83,7 @@ export function createProgram(
     .option('--policy <file>', 'Policy file path (defaults to <testsFolder>/policy.json)')
     .option('--mode <mode>', 'Engine mode: single-tenant|multi-tenant', 'single-tenant')
     .action(
-      async (
-        testsFolder: string,
-        options: { policy?: string; mode: string },
-      ): Promise<void> => {
+      async (testsFolder: string, options: { policy?: string; mode: string }): Promise<void> => {
         const mode = parseMode(options.mode);
         setExitCode(
           await runTestCommand({
@@ -183,10 +174,4 @@ function parseMode(value: string): 'single-tenant' | 'multi-tenant' {
   );
 }
 
-export {
-  runDiffCommand,
-  runInitCommand,
-  runTestCommand,
-  runTypesCommand,
-  runValidateCommand,
-};
+export { runDiffCommand, runInitCommand, runTestCommand, runTypesCommand, runValidateCommand };

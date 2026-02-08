@@ -1,4 +1,4 @@
-import { stableStringify } from '@acx/compiler';
+import { stableStringify } from '@hexmon_tech/compiler';
 import type {
   FieldSelection,
   PolicyConstraints,
@@ -6,7 +6,7 @@ import type {
   PolicySet,
   RoleDefinition,
   RolePermission,
-} from '@acx/policy-dsl';
+} from '@hexmon_tech/policy-dsl';
 
 import type { CommandContext } from './shared';
 import { loadPolicy, printDiagnostics, validateAndCompile } from './shared';
@@ -195,9 +195,7 @@ function normalizePermission(permission: RolePermission): Record<string, unknown
   };
 }
 
-function normalizeConstraints(
-  constraints: PolicyConstraints | undefined,
-): Record<string, unknown> {
+function normalizeConstraints(constraints: PolicyConstraints | undefined): Record<string, unknown> {
   return {
     mutuallyExclusiveRoles: (constraints?.mutuallyExclusiveRoles ?? [])
       .map((item) => [...item].sort())
@@ -243,10 +241,7 @@ function keysInNewOnly<T>(left: Map<string, T>, right: Map<string, T>): string[]
   return [...right.keys()].filter((key) => !left.has(key)).sort();
 }
 
-function changedKeys(
-  before: Record<string, unknown>,
-  after: Record<string, unknown>,
-): string[] {
+function changedKeys(before: Record<string, unknown>, after: Record<string, unknown>): string[] {
   const keys = new Set([...Object.keys(before), ...Object.keys(after)]);
   const changed: string[] = [];
 

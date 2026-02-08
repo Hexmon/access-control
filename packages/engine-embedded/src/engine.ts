@@ -8,13 +8,12 @@ import type {
   Obligation,
   Reason,
   TraceEvent,
-} from '@acx/core';
-import { assertTenant, createTraceId, normalizeFields } from '@acx/core';
-import { EngineError } from '@acx/core';
-import type { PolicyIR } from '@acx/compiler';
-import { hashObject } from '@acx/compiler';
-import type { CompiledRule, ConditionInput } from '@acx/compiler';
-import type { TenantScope } from '@acx/policy-dsl';
+} from '@hexmon_tech/core';
+import { assertTenant, createTraceId, normalizeFields } from '@hexmon_tech/core';
+import { EngineError } from '@hexmon_tech/core';
+import type { PolicyIR } from '@hexmon_tech/compiler';
+import { hashObject } from '@hexmon_tech/compiler';
+import type { CompiledRule, ConditionInput } from '@hexmon_tech/compiler';
 
 import { buildRuleIndex, getCandidates, RuleIndex } from './indexes';
 import { buildRoleGraph, buildRoleRuleIndexes, resolveEffectiveRoles, RoleGraph } from './roles';
@@ -146,9 +145,7 @@ export class EmbeddedEngine implements AuthorizationEngine {
     const normalizedFields = normalizeFields(input.action.fields);
 
     const cacheKey =
-      this.cache && !traceOptions.trace
-        ? buildCacheKey(input, tenantId, normalizedFields)
-        : null;
+      this.cache && !traceOptions.trace ? buildCacheKey(input, tenantId, normalizedFields) : null;
 
     if (this.cache && cacheKey) {
       const cached = this.cache.get(cacheKey);
@@ -256,12 +253,10 @@ export class EmbeddedEngine implements AuthorizationEngine {
     const deniedFields = new Set<string>();
     const obligations: Obligation[] = [];
 
-    const denyCandidates = getCandidates(
-      this.denyIndex,
-      input.action.name,
-      input.resource.type,
-      ['tenant', 'global'],
-    );
+    const denyCandidates = getCandidates(this.denyIndex, input.action.name, input.resource.type, [
+      'tenant',
+      'global',
+    ]);
 
     for (const rule of denyCandidates) {
       if (!rule.predicate(evaluationInput)) {
@@ -376,12 +371,9 @@ export class EmbeddedEngine implements AuthorizationEngine {
         return {
           allow: false,
           reasons: [
-            ruleReason(
-              'FIELD_VIOLATION',
-              'Denied due to field restrictions.',
-              matchedRule,
-              { fields: sortedDenied },
-            ),
+            ruleReason('FIELD_VIOLATION', 'Denied due to field restrictions.', matchedRule, {
+              fields: sortedDenied,
+            }),
           ],
           obligations,
         };
@@ -413,16 +405,11 @@ export class EmbeddedEngine implements AuthorizationEngine {
     };
   }
 
-  private getAllowCandidates(
-    input: AuthorizationInput,
-    effectiveRoles: string[],
-  ): CompiledRule[] {
-    const directAllow = getCandidates(
-      this.allowIndex,
-      input.action.name,
-      input.resource.type,
-      ['tenant', 'global'],
-    );
+  private getAllowCandidates(input: AuthorizationInput, effectiveRoles: string[]): CompiledRule[] {
+    const directAllow = getCandidates(this.allowIndex, input.action.name, input.resource.type, [
+      'tenant',
+      'global',
+    ]);
 
     const roleAllow: CompiledRule[] = [];
     for (const role of effectiveRoles) {
@@ -669,7 +656,7 @@ class TraceCollector {
 
   record(type: TraceEvent['type'], message: string, data?: Record<string, unknown>): void {
     const event: TraceEvent = {
-      id: `${this.traceId}:${this.counter += 1}`,
+      id: `${this.traceId}:${(this.counter += 1)}`,
       at: new Date().toISOString(),
       type,
       message,
