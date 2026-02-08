@@ -4,6 +4,7 @@ import type {
   AuthorizationOptions,
   Decision,
   DecisionMeta,
+  Obligation,
   Reason,
 } from '@hexmon_tech/core';
 import { EngineError } from '@hexmon_tech/core';
@@ -158,8 +159,8 @@ export class HybridEngine implements AuthorizationEngine {
 
     return {
       ...decision,
-      reasons: decision.reasons.map((reason) => ({ ...reason })),
-      obligations: decision.obligations.map((obligation) => ({ ...obligation })),
+      reasons: decision.reasons.map((reason: Reason) => ({ ...reason })),
+      obligations: decision.obligations.map((obligation: Obligation) => ({ ...obligation })),
       meta,
     };
   }
@@ -191,8 +192,13 @@ function combineDecisions(
     engineParts,
   };
 
-  const reasons = [...embeddedDecision.reasons.map((reason) => ({ ...reason })), rebacReason];
-  const obligations = embeddedDecision.obligations.map((obligation) => ({ ...obligation }));
+  const reasons = [
+    ...embeddedDecision.reasons.map((reason: Reason) => ({ ...reason })),
+    rebacReason,
+  ];
+  const obligations = embeddedDecision.obligations.map((obligation: Obligation) => ({
+    ...obligation,
+  }));
 
   return {
     allow,
