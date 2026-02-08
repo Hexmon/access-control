@@ -42,14 +42,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/acx-dev/acx.git",
+    "url": "https://github.com/Hexmon/access-control.git",
     "directory": "packages/compiler"
   },
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://github.com/acx-dev/acx",
+  "homepage": "https://github.com/Hexmon/access-control",
   "bugs": {
-    "url": "https://github.com/acx-dev/acx/issues"
+    "url": "https://github.com/Hexmon/access-control/issues"
   }
 }
