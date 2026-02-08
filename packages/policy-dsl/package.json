@@ -1,0 +1,49 @@
+{
+  "name": "@acx/policy-dsl",
+  "version": "0.0.0",
+  "description": "acx policy-dsl package.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "ajv": "^8.12.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint src --max-warnings=0",
+    "test": "vitest run --passWithNoTests"
+  },
+  "author": "ACX Authors",
+  "keywords": [
+    "access-control",
+    "authorization",
+    "policy",
+    "dsl",
+    "json-schema"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acx-dev/acx.git",
+    "directory": "packages/policy-dsl"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

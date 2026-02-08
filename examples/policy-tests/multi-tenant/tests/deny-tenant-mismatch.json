@@ -1,0 +1,10 @@
+{
+  "name": "deny invoice create on tenant mismatch",
+  "input": {
+    "principal": { "id": "u1", "type": "user", "tenantId": "tenant-a" },
+    "resource": { "type": "invoice", "id": "inv-1" },
+    "action": { "name": "invoice:create" },
+    "context": { "tenantId": "tenant-b" }
+  },
+  "expectedAllow": false
+}

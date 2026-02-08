@@ -1,0 +1,43 @@
+{
+  "policyVersion": "1.0.0",
+  "rules": [
+    {
+      "id": "allow-ticket-read-global",
+      "effect": "allow",
+      "actions": ["ticket:read"],
+      "resourceTypes": ["ticket"],
+      "tenantScope": "global",
+      "priority": 5
+    },
+    {
+      "id": "allow-invoice-create-tenant",
+      "effect": "allow",
+      "actions": ["invoice:create"],
+      "resourceTypes": ["invoice"],
+      "tenantScope": "tenant",
+      "when": {
+        "op": "eq",
+        "left": { "ref": "principal.tenantId" },
+        "right": { "ref": "context.tenantId" }
+      },
+      "priority": 20
+    },
+    {
+      "id": "deny-invoice-approve",
+      "effect": "deny",
+      "actions": ["invoice:approve"],
+      "resourceTypes": ["invoice"],
+      "tenantScope": "tenant",
+      "priority": 100
+    }
+  ],
+  "constraints": {
+    "mutuallyExclusiveRoles": [["PaymentCreator", "PaymentApprover"]],
+    "maxRoleHolders": {
+      "SuperAdmin": 2
+    },
+    "prerequisiteRoles": {
+      "Manager": ["Employee"]
+    }
+  }
+}

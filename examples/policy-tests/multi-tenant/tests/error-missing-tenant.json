@@ -1,0 +1,10 @@
+{
+  "name": "error when tenant missing in multi-tenant mode",
+  "input": {
+    "principal": { "id": "u1", "type": "user", "tenantId": "" },
+    "resource": { "type": "invoice", "id": "inv-1" },
+    "action": { "name": "invoice:create" }
+  },
+  "expectedErrorCode": "ACX_ERR_MISSING_TENANT",
+  "expectedAllow": false
+}

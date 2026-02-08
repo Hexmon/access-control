@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acx.dev/schemas/policyset.json",
+  "title": "acx PolicySet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["policyVersion", "rules"],
+  "properties": {
+    "policyVersion": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/rule" }
+    },
+    "roles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/role" }
+    },
+    "constraints": { "$ref": "#/$defs/constraints" }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "effect", "actions", "resourceTypes"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "effect": { "type": "string", "enum": ["allow", "deny"] },
+        "actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "resourceTypes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "fields": { "$ref": "#/$defs/fields" },
+        "when": { "$ref": "#/$defs/condition" },
+        "obligations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/obligation" }
+        },
+        "priority": { "type": "integer" },
+        "tenantScope": { "type": "string", "enum": ["global", "tenant"] }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allow": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "deny": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "obligation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "payload": { "type": "object" }
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "permissions"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "inherits": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "permissions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/permission" }
+        }
+      }
+    },
+    "permission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actions", "resourceTypes"],
+      "properties": {
+        "actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "resourceTypes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "fields": { "$ref": "#/$defs/fields" },
+        "when": { "$ref": "#/$defs/condition" }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mutuallyExclusiveRoles": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+        "maxRoleHolders": {
+          "type": "object",
+          "propertyNames": { "minLength": 1 },
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        },
+        "prerequisiteRoles": {
+          "type": "object",
+          "propertyNames": { "minLength": 1 },
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref"],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(principal|resource|context)\\."
+        }
+      }
+    },
+    "refOrValue": {
+      "oneOf": [
+        { "$ref": "#/$defs/ref" },
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "boolean" },
+        { "type": "null" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/refOrValue" }
+        }
+      ]
+    },
+    "condition": {
+      "oneOf": [
+        { "$ref": "#/$defs/andCondition" },
+        { "$ref": "#/$defs/orCondition" },
+        { "$ref": "#/$defs/notCondition" },
+        { "$ref": "#/$defs/compareCondition" },
+        { "$ref": "#/$defs/inCondition" },
+        { "$ref": "#/$defs/containsCondition" },
+        { "$ref": "#/$defs/matchesCondition" }
+      ]
+    },
+    "andCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "args"],
+      "properties": {
+        "op": { "const": "and" },
+        "args": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/condition" }
+        }
+      }
+    },
+    "orCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "args"],
+      "properties": {
+        "op": { "const": "or" },
+        "args": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/condition" }
+        }
+      }
+    },
+    "notCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "arg"],
+      "properties": {
+        "op": { "const": "not" },
+        "arg": { "$ref": "#/$defs/condition" }
+      }
+    },
+    "compareCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "left", "right"],
+      "properties": {
+        "op": { "enum": ["eq", "ne", "gt", "gte", "lt", "lte"] },
+        "left": { "$ref": "#/$defs/refOrValue" },
+        "right": { "$ref": "#/$defs/refOrValue" }
+      }
+    },
+    "inCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "item", "set"],
+      "properties": {
+        "op": { "const": "in" },
+        "item": { "$ref": "#/$defs/refOrValue" },
+        "set": {
+          "oneOf": [
+            { "$ref": "#/$defs/ref" },
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/refOrValue" }
+            }
+          ]
+        }
+      }
+    },
+    "containsCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "text", "value"],
+      "properties": {
+        "op": { "const": "contains" },
+        "text": { "$ref": "#/$defs/refOrValue" },
+        "value": { "$ref": "#/$defs/refOrValue" }
+      }
+    },
+    "matchesCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "text", "regex"],
+      "properties": {
+        "op": { "const": "matches" },
+        "text": { "$ref": "#/$defs/refOrValue" },
+        "regex": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

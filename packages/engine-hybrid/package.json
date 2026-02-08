@@ -1,0 +1,50 @@
+{
+  "name": "@acx/engine-hybrid",
+  "version": "0.0.0",
+  "description": "acx hybrid engine package.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@acx/core": "workspace:*",
+    "@acx/engine-rebac": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint src --max-warnings=0",
+    "test": "vitest run --passWithNoTests"
+  },
+  "author": "ACX Authors",
+  "keywords": [
+    "access-control",
+    "authorization",
+    "hybrid",
+    "rebac",
+    "policy-engine"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acx-dev/acx.git",
+    "directory": "packages/engine-hybrid"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

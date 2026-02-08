@@ -1,0 +1,13 @@
+{
+  "name": "allow payment approve in approve task",
+  "input": {
+    "principal": { "id": "u2", "type": "user", "tenantId": "tenant-a" },
+    "resource": { "type": "payment", "id": "pm-1" },
+    "action": { "name": "payment:approve" },
+    "context": {
+      "tenantId": "tenant-a",
+      "workflow": { "task": "approve" }
+    }
+  },
+  "expectedAllow": true
+}

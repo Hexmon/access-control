@@ -1,0 +1,10 @@
+{
+  "name": "allow post read",
+  "input": {
+    "principal": { "id": "u1", "type": "user", "tenantId": "tenant-a", "roles": ["Reader"] },
+    "resource": { "type": "post", "id": "p1" },
+    "action": { "name": "post:read" },
+    "context": { "tenantId": "tenant-a" }
+  },
+  "expectedAllow": true
+}

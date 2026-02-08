@@ -1,0 +1,57 @@
+{
+  "policyVersion": "1.0.0",
+  "rules": [
+    {
+      "id": "allow-post-read",
+      "effect": "allow",
+      "actions": ["post:read"],
+      "resourceTypes": ["post"],
+      "priority": 10
+    },
+    {
+      "id": "allow-owner-update-title",
+      "effect": "allow",
+      "actions": ["post:update"],
+      "resourceTypes": ["post"],
+      "fields": {
+        "allow": ["title"]
+      },
+      "when": {
+        "op": "eq",
+        "left": { "ref": "principal.id" },
+        "right": { "ref": "resource.attrs.ownerId" }
+      },
+      "priority": 20
+    },
+    {
+      "id": "deny-post-delete",
+      "effect": "deny",
+      "actions": ["post:delete"],
+      "resourceTypes": ["post"],
+      "priority": 100
+    },
+    {
+      "id": "allow-workflow-approve",
+      "effect": "allow",
+      "actions": ["payment:approve"],
+      "resourceTypes": ["payment"],
+      "when": {
+        "op": "eq",
+        "left": { "ref": "context.workflow.task" },
+        "right": "approve"
+      },
+      "priority": 30
+    }
+  ],
+  "roles": [
+    {
+      "name": "Reader",
+      "permissions": [
+        {
+          "actions": ["post:read"],
+          "resourceTypes": ["post"]
+        }
+      ]
+    }
+  ]
+}

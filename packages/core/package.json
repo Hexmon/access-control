@@ -1,0 +1,46 @@
+{
+  "name": "@acx/core",
+  "version": "0.0.0",
+  "description": "acx core package.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint src --max-warnings=0",
+    "test": "vitest run --passWithNoTests"
+  },
+  "author": "ACX Authors",
+  "keywords": [
+    "access-control",
+    "authorization",
+    "rbac",
+    "abac",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acx-dev/acx.git",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

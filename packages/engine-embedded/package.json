@@ -1,0 +1,52 @@
+{
+  "name": "@acx/engine-embedded",
+  "version": "0.0.0",
+  "description": "acx engine-embedded package.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@acx/compiler": "workspace:*",
+    "@acx/core": "workspace:*",
+    "@acx/policy-dsl": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint src --max-warnings=0",
+    "test": "vitest run --passWithNoTests",
+    "bench": "node bench/run.mjs"
+  },
+  "author": "ACX Authors",
+  "keywords": [
+    "access-control",
+    "authorization",
+    "policy-engine",
+    "embedded",
+    "rbac"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acx-dev/acx.git",
+    "directory": "packages/engine-embedded"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

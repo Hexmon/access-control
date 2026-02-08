@@ -1,0 +1,18 @@
+{
+  "name": "allow owner update with field omission",
+  "input": {
+    "principal": { "id": "u1", "type": "user", "tenantId": "tenant-a" },
+    "resource": { "type": "post", "id": "p1", "attrs": { "ownerId": "u1" } },
+    "action": { "name": "post:update", "fields": ["title", "content"] },
+    "context": { "tenantId": "tenant-a" }
+  },
+  "expectedAllow": true,
+  "expectedObligations": [
+    {
+      "type": "omitFields",
+      "payload": {
+        "fields": ["content"]
+      }
+    }
+  ]
+}

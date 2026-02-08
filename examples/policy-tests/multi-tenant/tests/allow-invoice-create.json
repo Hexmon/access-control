@@ -1,0 +1,10 @@
+{
+  "name": "allow invoice create when tenant matches",
+  "input": {
+    "principal": { "id": "u1", "type": "user", "tenantId": "tenant-a" },
+    "resource": { "type": "invoice", "id": "inv-1" },
+    "action": { "name": "invoice:create" },
+    "context": { "tenantId": "tenant-a" }
+  },
+  "expectedAllow": true
+}

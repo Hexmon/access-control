@@ -1,0 +1,36 @@
+{
+  "name": "acx",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Access-control monorepo for the acx library.",
+  "license": "MIT",
+  "packageManager": "pnpm@9.12.2",
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier . --check",
+    "format:write": "prettier . --write",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.8",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@types/node": "^20.14.9",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}

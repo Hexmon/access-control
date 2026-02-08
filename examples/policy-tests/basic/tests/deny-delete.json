@@ -1,0 +1,10 @@
+{
+  "name": "deny post delete",
+  "input": {
+    "principal": { "id": "u1", "type": "user", "tenantId": "tenant-a" },
+    "resource": { "type": "post", "id": "p1" },
+    "action": { "name": "post:delete" },
+    "context": { "tenantId": "tenant-a" }
+  },
+  "expectedAllow": false
+}
