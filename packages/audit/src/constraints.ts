@@ -145,7 +145,7 @@ async function validateMaxRoleHolders(
   tenantId: string,
 ): Promise<ConstraintError[]> {
   const limit = constraints.maxRoleHolders?.[targetRole];
-  if (!limit) {
+  if (limit == null) {
     return [];
   }
 

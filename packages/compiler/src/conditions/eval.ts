@@ -50,7 +50,8 @@ export function evaluateCondition(condition: Condition, input: ConditionInput): 
       return matchesRegex(resolveValue(condition.text, input), condition.regex);
     default: {
       const _exhaustive: never = condition;
-      return _exhaustive;
+      void _exhaustive;
+      return false;
     }
   }
 }
@@ -114,7 +115,42 @@ function isRef(value: RefOrValue): value is Ref {
 }
 
 function isEqual(left: unknown, right: unknown): boolean {
-  return Object.is(left, right);
+  if (Object.is(left, right)) {
+    return true;
+  }
+
+  if (
+    typeof left !== 'object' ||
+    typeof right !== 'object' ||
+    left === null ||
+    right === null
+  ) {
+    return false;
+  }
+
+  if (Array.isArray(left) && Array.isArray(right)) {
+    if (left.length !== right.length) {
+      return false;
+    }
+    return left.every((item, index) => isEqual(item, right[index]));
+  }
+
+  if (Array.isArray(left) || Array.isArray(right)) {
+    return false;
+  }
+
+  const leftRecord = left as Record<string, unknown>;
+  const rightRecord = right as Record<string, unknown>;
+  const leftKeys = Object.keys(leftRecord).sort();
+  const rightKeys = Object.keys(rightRecord).sort();
+
+  if (leftKeys.length !== rightKeys.length) {
+    return false;
+  }
+
+  return leftKeys.every(
+    (key, index) => key === rightKeys[index] && isEqual(leftRecord[key], rightRecord[key]),
+  );
 }
 
 function compareValues(left: unknown, right: unknown, op: 'gt' | 'gte' | 'lt' | 'lte'): boolean {
@@ -152,7 +188,7 @@ function inSet(item: unknown, setValue: unknown): boolean {
     return false;
   }
 
-  return setValue.some((entry) => Object.is(entry, item));
+  return setValue.some((entry) => isEqual(entry, item));
 }
 
 function containsValue(text: unknown, value: unknown): boolean {
@@ -161,21 +197,37 @@ function containsValue(text: unknown, value: unknown): boolean {
   }
 
   if (Array.isArray(text)) {
-    return text.some((entry) => Object.is(entry, value));
+    return text.some((entry) => isEqual(entry, value));
   }
 
   return false;
 }
+
+const MAX_REGEX_LENGTH = 1024;
+const regexCache = new Map<string, RegExp | null>();
 
 function matchesRegex(text: unknown, regex: string): boolean {
   if (typeof text !== 'string') {
     return false;
   }
 
-  try {
-    const pattern = new RegExp(regex);
-    return pattern.test(text);
-  } catch {
+  if (regex.length > MAX_REGEX_LENGTH) {
     return false;
   }
+
+  let cached = regexCache.get(regex);
+  if (cached === undefined) {
+    try {
+      cached = new RegExp(regex);
+    } catch {
+      cached = null;
+    }
+    regexCache.set(regex, cached);
+  }
+
+  if (cached === null) {
+    return false;
+  }
+
+  return cached.test(text);
 }

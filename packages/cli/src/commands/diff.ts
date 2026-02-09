@@ -58,8 +58,10 @@ export async function runDiffCommand(options: DiffCommandOptions): Promise<numbe
 export function buildPolicyDiff(oldPolicy: PolicySet, newPolicy: PolicySet): string[] {
   const lines: string[] = [];
 
-  lines.push(`Policy version: ${oldPolicy.policyVersion} -> ${newPolicy.policyVersion}`);
-  lines.push('');
+  if (oldPolicy.policyVersion !== newPolicy.policyVersion) {
+    lines.push(`Policy version: ${oldPolicy.policyVersion} -> ${newPolicy.policyVersion}`);
+    lines.push('');
+  }
 
   lines.push(...diffRules(oldPolicy.rules, newPolicy.rules));
   lines.push('');

@@ -99,11 +99,11 @@ export class AuthzGuard implements CanActivate {
 
   private mapToNestException(error: unknown): Error {
     if (error instanceof MissingTenantError) {
-      if (this.config?.missingTenantStatus === 400) {
-        return new BadRequestException('Tenant id is required.');
+      if (this.config?.missingTenantStatus === 401) {
+        return new UnauthorizedException('Tenant id is required.');
       }
 
-      return new UnauthorizedException('Tenant id is required.');
+      return new BadRequestException('Tenant id is required.');
     }
 
     if (error instanceof ForbiddenException) {

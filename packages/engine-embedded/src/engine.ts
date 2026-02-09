@@ -268,11 +268,12 @@ export class EmbeddedEngine implements AuthorizationEngine {
       const hasFieldSelectors = Boolean(rule.fieldMatchers.allow || rule.fieldMatchers.deny);
 
       if (!hasFieldSelectors) {
+        obligations.push(...rule.obligations);
         return {
           decision: {
             allow: false,
             reasons: [ruleReason('RULE_DENY', `Denied by rule ${rule.id}.`, rule)],
-            obligations: [...rule.obligations],
+            obligations,
           },
           deniedFields,
           obligations,
@@ -506,7 +507,7 @@ function collectDeniedFieldsForDenyRule(rule: CompiledRule, fields: string[]): s
 
   if (rule.fieldMatchers.allow) {
     for (const field of fields) {
-      if (rule.fieldMatchers.allow.match(field)) {
+      if (!rule.fieldMatchers.allow.match(field)) {
         denied.add(field);
       }
     }
@@ -573,17 +574,17 @@ function buildCacheKey(
     parent: input.resource.parent,
   });
 
-  return [
-    tenantId ?? '',
-    input.principal.id,
-    input.action.name,
-    input.resource.type,
-    input.resource.id ?? '',
+  return hashObject({
+    tenantId: tenantId ?? '',
+    principalId: input.principal.id,
+    actionName: input.action.name,
+    resourceType: input.resource.type,
+    resourceId: input.resource.id ?? '',
     fieldsHash,
     contextHash,
     principalHash,
     resourceHash,
-  ].join('|');
+  });
 }
 
 function pickCacheContext(context: AuthorizationInput['context']): Record<string, unknown> {
@@ -591,15 +592,7 @@ function pickCacheContext(context: AuthorizationInput['context']): Record<string
     return {};
   }
 
-  const { tenantId, request, time, workflow, env, ...rest } = context;
-  return {
-    tenantId,
-    request,
-    time,
-    workflow,
-    env,
-    ...rest,
-  };
+  return { ...context };
 }
 
 class LruCache<T> {

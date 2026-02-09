@@ -37,8 +37,9 @@ export class OpenFgaRebacAdapter implements RebacAdapter {
   }
 
   public async writeTuples(tuples: RelationshipTuple[], options?: RebacCallOptions): Promise<void> {
+    const tenantId = tuples[0]?.tenantId ?? options?.tenantId;
     const request: OpenFgaWriteTuplesRequest = {
-      ...this.requestContext(options?.tenantId),
+      ...this.requestContext(tenantId),
       writes: {
         tuple_keys: tuples.map(toTupleKey),
       },

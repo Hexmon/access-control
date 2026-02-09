@@ -61,6 +61,7 @@ export class BatchingSink implements AuditSink {
       this.timer = setInterval(() => {
         void this.flush();
       }, this.flushIntervalMs);
+      this.timer.unref();
     }
   }
 
@@ -76,6 +77,10 @@ export class BatchingSink implements AuditSink {
   public async flush(): Promise<void> {
     if (this.flushing) {
       await this.flushing;
+      // Re-check: events may have been buffered while we waited.
+      if (this.buffer.length > 0) {
+        return this.flush();
+      }
       return;
     }
 

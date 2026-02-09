@@ -27,7 +27,9 @@ export function assertTenant(
   input: TenantAssertionInput,
   mode: TenantAssertionMode = 'required',
 ): string | undefined {
-  const tenantId = input.context?.tenantId ?? input.principal?.tenantId;
+  const contextTenant = input.context?.tenantId?.trim() || undefined;
+  const principalTenant = input.principal?.tenantId?.trim() || undefined;
+  const tenantId = contextTenant ?? principalTenant;
 
   if (!tenantId && mode === 'required') {
     throw new MissingTenantError();

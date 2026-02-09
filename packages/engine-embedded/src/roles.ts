@@ -24,7 +24,48 @@ export function buildRoleGraph(roles?: RoleDefinition[]): RoleGraph {
     inherits.set(role.name, role.inherits ? [...role.inherits] : []);
   }
 
+  detectCyclicInheritance(inherits);
+
   return { inherits };
+}
+
+/** Detect circular role inheritance and throw on cycle. */
+function detectCyclicInheritance(inherits: Map<string, string[]>): void {
+  const UNVISITED = 0;
+  const IN_PROGRESS = 1;
+  const DONE = 2;
+
+  const state = new Map<string, number>();
+
+  for (const role of inherits.keys()) {
+    state.set(role, UNVISITED);
+  }
+
+  function visit(role: string, path: string[]): void {
+    if (state.get(role) === DONE) {
+      return;
+    }
+
+    if (state.get(role) === IN_PROGRESS) {
+      const cycleStart = path.indexOf(role);
+      const cycle = path.slice(cycleStart).concat(role);
+      throw new Error(`Circular role inheritance detected: ${cycle.join(' -> ')}`);
+    }
+
+    state.set(role, IN_PROGRESS);
+
+    for (const parent of inherits.get(role) ?? []) {
+      visit(parent, [...path, role]);
+    }
+
+    state.set(role, DONE);
+  }
+
+  for (const role of inherits.keys()) {
+    if (state.get(role) === UNVISITED) {
+      visit(role, []);
+    }
+  }
 }
 
 /** Resolve effective roles including inherited permissions. */
