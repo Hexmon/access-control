@@ -40,7 +40,7 @@ export class HybridEngine implements AuthorizationEngine {
     this.embeddedEngine = options.embeddedEngine;
     this.rebacAdapter = options.rebacAdapter;
     this.config = options.config;
-    this.engine = options.engineName ?? 'acx-hybrid';
+    this.engine = options.engineName ?? 'hexmon_tech-hybrid';
   }
 
   public async authorize(

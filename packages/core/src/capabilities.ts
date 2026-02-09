@@ -2,7 +2,7 @@ import { EngineError } from './errors';
 
 export const CAPABILITIES = ['listObjects', 'listSubjects', 'filterQuery', 'explain'] as const;
 
-/** Capability flag identifiers supported by acx engines. */
+/** Capability flag identifiers supported by @hexmon_tech engines. */
 export type Capability = (typeof CAPABILITIES)[number];
 
 /** A capability map indicating which optional features are supported. */

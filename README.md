@@ -1,10 +1,10 @@
-# acx
+# @hexmon_tech
 
 Enterprise-grade access-control tooling for JavaScript/TypeScript, published under `@hexmon_tech/*`.
 
 ## Vision
 
-acx provides one authorization model across RBAC, ABAC, context/workflow checks, field-level controls, and optional relationship-based enforcement.
+@hexmon_tech provides one authorization model across RBAC, ABAC, context/workflow checks, field-level controls, and optional relationship-based enforcement.
 
 V1 ships the embedded engine first; adapters are layered on top.
 
@@ -23,7 +23,7 @@ Package inventory with entry exports: [`docs/packages.md`](docs/packages.md).
 - [`@hexmon_tech/integrations-express`](packages/integrations-express): Express middleware + error mapper.
 - [`@hexmon_tech/integrations-next-node`](packages/integrations-next-node): Next.js Node runtime wrappers.
 - [`@hexmon_tech/integrations-nest`](packages/integrations-nest): Nest decorators/guard/module.
-- [`@hexmon_tech/cli`](packages/cli): policy devtools CLI (`acx`).
+- [`@hexmon_tech/cli`](packages/cli): policy devtools CLI (`hexmon_tech`).
 
 ## Repository Verification
 

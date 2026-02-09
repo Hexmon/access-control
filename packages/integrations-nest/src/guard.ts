@@ -34,7 +34,7 @@ import {
   type PrincipalResolver,
 } from './tokens';
 
-/** Nest guard that executes acx authorization before controller handlers. */
+/** Nest guard that executes @hexmon_tech authorization before controller handlers. */
 @Injectable()
 export class AuthzGuard implements CanActivate {
   constructor(

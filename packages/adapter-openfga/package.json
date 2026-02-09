@@ -1,7 +1,7 @@
 {
   "name": "@hexmon_tech/adapter-openfga",
   "version": "0.1.0",
-  "description": "acx OpenFGA adapter skeleton.",
+  "description": "@hexmon_tech OpenFGA adapter skeleton.",
   "license": "MIT",
   "engines": {
     "node": ">=18"

@@ -15,7 +15,7 @@ All publishable workspace packages are scoped under `@hexmon_tech/*`.
 | `@hexmon_tech/integrations-express`   | Express middleware and error mapping helpers.                              | `.` -> `types: ./dist/index.d.ts`, `import: ./dist/index.mjs`, `require: ./dist/index.cjs`                               |
 | `@hexmon_tech/integrations-next-node` | Next.js Node runtime wrappers for route handlers/server actions.           | `.` -> `types: ./dist/index.d.ts`, `import: ./dist/index.mjs`, `require: ./dist/index.cjs`                               |
 | `@hexmon_tech/integrations-nest`      | NestJS decorators/guard/tokens/module for authz integration.               | `.` -> `types: ./dist/index.d.ts`, `import: ./dist/index.mjs`, `require: ./dist/index.cjs`                               |
-| `@hexmon_tech/cli`                    | CLI devtools for validate/test/types/diff/init workflows.                  | `.` -> `types: ./dist/index.d.ts`, `import: ./dist/index.mjs`, `require: ./dist/index.cjs`; `bin: acx -> ./dist/bin.cjs` |
+| `@hexmon_tech/cli`                    | CLI devtools for validate/test/types/diff/init workflows.                  | `.` -> `types: ./dist/index.d.ts`, `import: ./dist/index.mjs`, `require: ./dist/index.cjs`; `bin: hexmon_tech -> ./dist/bin.cjs` |
 
 ## Verification
 

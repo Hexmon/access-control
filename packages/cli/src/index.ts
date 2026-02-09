@@ -18,14 +18,14 @@ export interface CliRunOptions {
   stderr?: NodeJS.WriteStream;
 }
 
-/** Build the ACX command-line program. */
+/** Build the @hexmon_tech command-line program. */
 export function createProgram(
   setExitCode: (code: number) => void,
   context: CommandContext,
 ): Command {
   const program = new Command();
 
-  program.name('acx').description('ACX policy CLI utilities').showHelpAfterError().exitOverride();
+  program.name('hexmon_tech').description('@hexmon_tech policy CLI utilities').showHelpAfterError().exitOverride();
 
   program
     .command('init')

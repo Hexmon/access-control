@@ -106,7 +106,7 @@ function createEvent(eventType: AuditEvent['eventType']): AuditEvent {
             allow: true,
             reasons: [],
             obligations: [],
-            engine: 'acx-embedded',
+            engine: 'hexmon_tech-embedded',
             evaluatedAt: '2026-02-08T00:00:00.000Z',
           },
         },

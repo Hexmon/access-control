@@ -1,6 +1,6 @@
 # Decision Matrix
 
-This matrix summarizes how acx aligns with different authorization models and deployment modes. It is intentionally scoped to architecture, not implementation details.
+This matrix summarizes how @hexmon_tech aligns with different authorization models and deployment modes. It is intentionally scoped to architecture, not implementation details.
 
 | Engine / Mode                       | Supported Models                                       | Pros                                                                                                                        | Cons                                                                                                                        | When to Use                                                                                                                   | Typical Deployments                                                                  |
 | ----------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |

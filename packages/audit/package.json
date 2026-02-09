@@ -1,7 +1,7 @@
 {
   "name": "@hexmon_tech/audit",
   "version": "0.1.0",
-  "description": "acx audit package.",
+  "description": "@hexmon_tech audit package.",
   "license": "MIT",
   "engines": {
     "node": ">=18"

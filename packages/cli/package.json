@@ -1,13 +1,13 @@
 {
   "name": "@hexmon_tech/cli",
   "version": "0.1.0",
-  "description": "acx cli package.",
+  "description": "@hexmon_tech cli package.",
   "license": "MIT",
   "engines": {
     "node": ">=18"
   },
   "bin": {
-    "acx": "./dist/bin.cjs"
+    "hexmon_tech": "./dist/bin.cjs"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",

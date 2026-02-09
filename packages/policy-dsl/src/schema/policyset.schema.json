@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://acx.dev/schemas/policyset.json",
-  "title": "acx PolicySet",
+  "$id": "https://hexmon_tech.dev/schemas/policyset.json",
+  "title": "@hexmon_tech PolicySet",
   "type": "object",
   "additionalProperties": false,
   "required": ["policyVersion", "rules"],

@@ -3,10 +3,10 @@ import { SetMetadata } from '@nestjs/common';
 import type { ExecutionContext } from '@nestjs/common';
 
 /** Metadata key for action declarations. */
-export const AUTHZ_ACTION_METADATA = 'acx:authz:action';
+export const AUTHZ_ACTION_METADATA = 'hexmon_tech:authz:action';
 
 /** Metadata key for resource declarations. */
-export const AUTHZ_RESOURCE_METADATA = 'acx:authz:resource';
+export const AUTHZ_RESOURCE_METADATA = 'hexmon_tech:authz:resource';
 
 /** Metadata payload for action decorators. */
 export interface AuthzActionMetadata {

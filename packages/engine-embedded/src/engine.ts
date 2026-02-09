@@ -63,7 +63,7 @@ export class EmbeddedEngine implements AuthorizationEngine {
   constructor(options: EmbeddedEngineOptions = {}) {
     this.mode = options.mode ?? 'single-tenant';
     this.fieldViolation = options.fieldViolation ?? 'omit';
-    this.engine = options.engineName ?? 'acx-embedded';
+    this.engine = options.engineName ?? 'hexmon_tech-embedded';
 
     if (options.cache?.enabled === false) {
       this.cache = null;

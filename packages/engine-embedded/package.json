@@ -1,7 +1,7 @@
 {
   "name": "@hexmon_tech/engine-embedded",
   "version": "0.1.0",
-  "description": "acx engine-embedded package.",
+  "description": "@hexmon_tech engine-embedded package.",
   "license": "MIT",
   "engines": {
     "node": ">=18"

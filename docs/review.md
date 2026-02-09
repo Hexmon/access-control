@@ -209,7 +209,7 @@ pnpm --filter @hexmon_tech/integrations-nest pack:check
 ### `@hexmon_tech/cli`
 
 - Purpose: policy lifecycle devtools (`init`, `validate`, `test`, `types`, `diff`).
-- Key exports: CLI binary (`acx`), `runCli`, command handlers.
+- Key exports: CLI binary (`hexmon_tech`), `runCli`, command handlers.
 - Risks: low; help exit behavior note above.
 - Verify:
 

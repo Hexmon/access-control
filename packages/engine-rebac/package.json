@@ -1,7 +1,7 @@
 {
   "name": "@hexmon_tech/engine-rebac",
   "version": "0.1.0",
-  "description": "acx ReBAC engine interfaces and adapters.",
+  "description": "@hexmon_tech ReBAC engine interfaces and adapters.",
   "license": "MIT",
   "engines": {
     "node": ">=18"

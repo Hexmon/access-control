@@ -6,7 +6,7 @@ export const ERROR_CODES = {
 
 export type ErrorCode = (typeof ERROR_CODES)[keyof typeof ERROR_CODES];
 
-/** Base class for acx errors with stable error codes. */
+/** Base class for @hexmon_tech errors with stable error codes. */
 export class AcxError extends Error {
   public readonly code: ErrorCode;
   public readonly details?: unknown;

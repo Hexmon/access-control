@@ -11,11 +11,11 @@ pnpm add -D @hexmon_tech/cli
 ## Commands
 
 ```bash
-acx init --dir .
-acx validate examples/policies/basic.policy.json
-acx types examples/policies/basic.policy.json --out src/policy-types.ts
-acx test examples/policy-tests/basic --policy examples/policies/basic.policy.json
-acx diff examples/policies/basic.policy.json examples/policies/multi-tenant.policy.json
+hexmon_tech init --dir .
+hexmon_tech validate examples/policies/basic.policy.json
+hexmon_tech types examples/policies/basic.policy.json --out src/policy-types.ts
+hexmon_tech test examples/policy-tests/basic --policy examples/policies/basic.policy.json
+hexmon_tech diff examples/policies/basic.policy.json examples/policies/multi-tenant.policy.json
 ```
 
 ## API Overview

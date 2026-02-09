@@ -2,7 +2,7 @@ import { AcxError, EngineError, InvalidPolicyError, MissingTenantError } from '@
 
 import type { AuthzErrorBody, AuthzErrorHandlerOptions, ExpressErrorMiddleware } from './types';
 
-/** Create an Express error handler for acx authorization errors. */
+/** Create an Express error handler for @hexmon_tech authorization errors. */
 export function createAuthzErrorHandler(
   options: AuthzErrorHandlerOptions = {},
 ): ExpressErrorMiddleware {

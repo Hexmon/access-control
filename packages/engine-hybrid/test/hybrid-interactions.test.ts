@@ -175,7 +175,7 @@ describe('hybrid interactions', () => {
     const result = await engine.authorize(input());
 
     expect(result.allow).toBe(true);
-    expect(result.meta.engine).toBe('acx-hybrid');
+    expect(result.meta.engine).toBe('hexmon_tech-hybrid');
     expect((result.meta as { engineParts?: string[] }).engineParts).toEqual(['embedded', 'rebac']);
   });
 });

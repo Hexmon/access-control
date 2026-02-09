@@ -1,7 +1,7 @@
 {
   "name": "@hexmon_tech/integrations-nest",
   "version": "0.1.0",
-  "description": "acx integrations-nest package.",
+  "description": "@hexmon_tech integrations-nest package.",
   "license": "MIT",
   "engines": {
     "node": ">=18"

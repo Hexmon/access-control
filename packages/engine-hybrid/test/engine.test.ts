@@ -208,7 +208,7 @@ describe('HybridEngine', () => {
 
     expect(rebac.check).toHaveBeenCalledTimes(1);
     expect(decision.allow).toBe(true);
-    expect(decision.meta.engine).toBe('acx-hybrid');
+    expect(decision.meta.engine).toBe('hexmon_tech-hybrid');
     expect((decision.meta as { engineParts?: string[] }).engineParts).toEqual([
       'embedded',
       'rebac',

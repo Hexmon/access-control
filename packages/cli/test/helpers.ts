@@ -30,7 +30,7 @@ export function createTestContext(cwd: string): {
   };
 }
 
-export async function createTempDir(prefix = 'acx-cli-test-'): Promise<string> {
+export async function createTempDir(prefix = 'hexmon_tech-cli-test-'): Promise<string> {
   return mkdtemp(path.join(os.tmpdir(), prefix));
 }
 

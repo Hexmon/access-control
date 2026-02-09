@@ -47,9 +47,9 @@ export async function runInitCommand(options: InitCommandOptions): Promise<numbe
   options.context.io.out(`Scaffolded golden tests at ${testsRoot}`);
   options.context.io.out('');
   options.context.io.out('README snippet:');
-  options.context.io.out('  acx validate policy.json');
-  options.context.io.out('  acx test policy-tests --mode single-tenant');
-  options.context.io.out('  acx types policy.json --out src/policy-types.ts');
+  options.context.io.out('  hexmon_tech validate policy.json');
+  options.context.io.out('  hexmon_tech test policy-tests --mode single-tenant');
+  options.context.io.out('  hexmon_tech types policy.json --out src/policy-types.ts');
 
   return 0;
 }

@@ -1,7 +1,7 @@
 {
   "name": "@hexmon_tech/integrations-express",
   "version": "0.1.0",
-  "description": "acx integrations-express package.",
+  "description": "@hexmon_tech integrations-express package.",
   "license": "MIT",
   "engines": {
     "node": ">=18"

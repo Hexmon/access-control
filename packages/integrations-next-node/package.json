@@ -1,7 +1,7 @@
 {
   "name": "@hexmon_tech/integrations-next-node",
   "version": "0.1.0",
-  "description": "acx integrations-next-node package.",
+  "description": "@hexmon_tech integrations-next-node package.",
   "license": "MIT",
   "engines": {
     "node": ">=18"

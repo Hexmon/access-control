@@ -1,6 +1,6 @@
 # Canonical Use Cases
 
-Each question should be answerable by acx without leaking policy logic into application code. The list intentionally mixes RBAC, ABAC, ReBAC, task-based approvals, field-level rules, and contextual checks.
+Each question should be answerable by @hexmon_tech without leaking policy logic into application code. The list intentionally mixes RBAC, ABAC, ReBAC, task-based approvals, field-level rules, and contextual checks.
 
 1. Can a member of the "finance" role view the invoice list for their tenant?
 2. Can a contractor with role "viewer" download a file if the file is tagged "confidential"?

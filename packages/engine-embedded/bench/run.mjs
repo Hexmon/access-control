@@ -224,7 +224,7 @@ async function main() {
   const batch10 = await benchmarkBatch(engine, inputs, 10, BATCH_ITERATIONS_SMALL);
   const batch100 = await benchmarkBatch(engine, inputs, 100, BATCH_ITERATIONS_LARGE);
 
-  process.stdout.write('ACX Embedded Engine Benchmark\n');
+  process.stdout.write('Hexmon TechEmbedded Engine Benchmark\n');
   process.stdout.write(`authorize(): iterations=${single.iterations}\n`);
   process.stdout.write(`  ops/sec=${single.opsPerSec.toFixed(2)}\n`);
   process.stdout.write(`  p95~=${single.p95Ms.toFixed(4)} ms\n`);
