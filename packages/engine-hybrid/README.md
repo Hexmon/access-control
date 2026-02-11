@@ -1,17 +1,17 @@
-# @hexmon_tech/engine-hybrid
+# @hexmon_tech/acccess-control-engine-hybrid
 
 Hybrid engine that combines embedded decisions with ReBAC object checks.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/engine-hybrid
+pnpm add @hexmon_tech/acccess-control-engine-hybrid
 ```
 
 ## Minimal Usage
 
 ```ts
-import { HybridEngine } from '@hexmon_tech/engine-hybrid';
+import { HybridEngine } from '@hexmon_tech/acccess-control-engine-hybrid';
 
 const engine = new HybridEngine({
   embeddedEngine,
@@ -39,7 +39,7 @@ const engine = new HybridEngine({
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/engine-hybrid typecheck
-pnpm --filter @hexmon_tech/engine-hybrid test
-pnpm --filter @hexmon_tech/engine-hybrid build
+pnpm --filter @hexmon_tech/acccess-control-engine-hybrid typecheck
+pnpm --filter @hexmon_tech/acccess-control-engine-hybrid test
+pnpm --filter @hexmon_tech/acccess-control-engine-hybrid build
 ```

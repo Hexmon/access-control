@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/cli",
+  "name": "@hexmon_tech/acccess-control-cli",
   "version": "0.1.0",
   "description": "@hexmon_tech cli package.",
   "license": "MIT",
@@ -26,10 +26,10 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@hexmon_tech/compiler": "workspace:*",
-    "@hexmon_tech/core": "workspace:*",
-    "@hexmon_tech/engine-embedded": "workspace:*",
-    "@hexmon_tech/policy-dsl": "workspace:*",
+    "@hexmon_tech/acccess-control-compiler": "workspace:*",
+    "@hexmon_tech/acccess-control-core": "workspace:*",
+    "@hexmon_tech/acccess-control-engine-embedded": "workspace:*",
+    "@hexmon_tech/acccess-control-policy-dsl": "workspace:*",
     "commander": "^12.1.0"
   },
   "scripts": {

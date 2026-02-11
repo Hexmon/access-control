@@ -6,9 +6,9 @@ import type {
   DecisionMeta,
   Obligation,
   Reason,
-} from '@hexmon_tech/core';
-import { EngineError } from '@hexmon_tech/core';
-import type { RebacAdapter, RebacCheckResult } from '@hexmon_tech/engine-rebac';
+} from '@hexmon_tech/acccess-control-core';
+import { EngineError } from '@hexmon_tech/acccess-control-core';
+import type { RebacAdapter, RebacCheckResult } from '@hexmon_tech/acccess-control-engine-rebac';
 
 import { isRebacEnabledFor, type RebacEnabledActionsByResourceType } from './match';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/integrations-next-node",
+  "name": "@hexmon_tech/acccess-control-integrations-next-node",
   "version": "0.1.0",
   "description": "@hexmon_tech integrations-next-node package.",
   "license": "MIT",
@@ -23,7 +23,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@hexmon_tech/core": "workspace:*"
+    "@hexmon_tech/acccess-control-core": "workspace:*"
   },
   "scripts": {
     "build": "tsup",

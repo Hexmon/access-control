@@ -1,4 +1,4 @@
-import type { Resource } from '@hexmon_tech/core';
+import type { Resource } from '@hexmon_tech/acccess-control-core';
 import { SetMetadata } from '@nestjs/common';
 import type { ExecutionContext } from '@nestjs/common';
 

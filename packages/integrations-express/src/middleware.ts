@@ -1,4 +1,4 @@
-import type { Action, Decision } from '@hexmon_tech/core';
+import type { Action, Decision } from '@hexmon_tech/acccess-control-core';
 
 import type {
   ActionInput,

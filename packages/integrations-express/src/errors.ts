@@ -1,4 +1,9 @@
-import { AcxError, EngineError, InvalidPolicyError, MissingTenantError } from '@hexmon_tech/core';
+import {
+  AcxError,
+  EngineError,
+  InvalidPolicyError,
+  MissingTenantError,
+} from '@hexmon_tech/acccess-control-core';
 
 import type { AuthzErrorBody, AuthzErrorHandlerOptions, ExpressErrorMiddleware } from './types';
 

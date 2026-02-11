@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/engine-rebac",
+  "name": "@hexmon_tech/acccess-control-engine-rebac",
   "version": "0.1.0",
   "description": "@hexmon_tech ReBAC engine interfaces and adapters.",
   "license": "MIT",

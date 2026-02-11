@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import type { Condition } from '@hexmon_tech/policy-dsl';
+import type { Condition } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import { evaluateCondition } from '../src/conditions/eval';
 

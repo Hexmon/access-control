@@ -9,7 +9,7 @@ import type {
   RebacListSubjectsResult,
   RelationshipSubject,
   RelationshipTuple,
-} from '@hexmon_tech/engine-rebac';
+} from '@hexmon_tech/acccess-control-engine-rebac';
 
 import type { OpenFgaClient } from './client';
 import type {

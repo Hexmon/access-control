@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { compilePolicySet } from '../../compiler/src/compile';
-import type { PolicySet } from '@hexmon_tech/policy-dsl';
+import type { PolicySet } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import { EmbeddedEngine } from '../src/engine';
 

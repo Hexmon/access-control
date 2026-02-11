@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/policy-dsl",
+  "name": "@hexmon_tech/acccess-control-policy-dsl",
   "version": "0.1.0",
   "description": "@hexmon_tech policy-dsl package.",
   "license": "MIT",

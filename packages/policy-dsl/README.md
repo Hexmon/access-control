@@ -1,17 +1,17 @@
-# @hexmon_tech/policy-dsl
+# @hexmon_tech/acccess-control-policy-dsl
 
 Policy DSL package for JSON schema validation and builder APIs.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/policy-dsl
+pnpm add @hexmon_tech/acccess-control-policy-dsl
 ```
 
 ## Minimal Usage
 
 ```ts
-import { policySet, validatePolicySet } from '@hexmon_tech/policy-dsl';
+import { policySet, validatePolicySet } from '@hexmon_tech/acccess-control-policy-dsl';
 
 const policy = policySet('1.0.0')
   .rule({ id: 'allow-read', effect: 'allow', actions: ['post:read'], resourceTypes: ['post'] })
@@ -35,7 +35,7 @@ const result = validatePolicySet(policy);
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/policy-dsl typecheck
-pnpm --filter @hexmon_tech/policy-dsl test
-pnpm --filter @hexmon_tech/policy-dsl build
+pnpm --filter @hexmon_tech/acccess-control-policy-dsl typecheck
+pnpm --filter @hexmon_tech/acccess-control-policy-dsl test
+pnpm --filter @hexmon_tech/acccess-control-policy-dsl build
 ```

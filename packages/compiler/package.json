@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/compiler",
+  "name": "@hexmon_tech/acccess-control-compiler",
   "version": "0.1.0",
   "description": "@hexmon_tech compiler package.",
   "license": "MIT",
@@ -23,7 +23,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@hexmon_tech/policy-dsl": "workspace:*"
+    "@hexmon_tech/acccess-control-policy-dsl": "workspace:*"
   },
   "scripts": {
     "build": "tsup",

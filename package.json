@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/acx",
+  "name": "@hexmon_tech/acccess-control",
   "private": true,
   "version": "0.0.0",
   "description": "Access-control monorepo for the @hexmon_tech library.",

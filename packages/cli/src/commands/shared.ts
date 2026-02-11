@@ -1,7 +1,7 @@
-import type { Diagnostic } from '@hexmon_tech/compiler';
-import { compilePolicySet } from '@hexmon_tech/compiler';
-import type { PolicySet } from '@hexmon_tech/policy-dsl';
-import { validatePolicySet } from '@hexmon_tech/policy-dsl';
+import type { Diagnostic } from '@hexmon_tech/acccess-control-compiler';
+import { compilePolicySet } from '@hexmon_tech/acccess-control-compiler';
+import type { PolicySet } from '@hexmon_tech/acccess-control-policy-dsl';
+import { validatePolicySet } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import { readJson, resolvePath } from '../fs';
 

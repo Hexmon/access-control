@@ -40,28 +40,28 @@ importers:
 
   packages/adapter-openfga:
     dependencies:
-      '@hexmon_tech/engine-rebac':
+      '@hexmon_tech/acccess-control-engine-rebac':
         specifier: workspace:*
         version: link:../engine-rebac
 
   packages/audit:
     dependencies:
-      '@hexmon_tech/policy-dsl':
+      '@hexmon_tech/acccess-control-policy-dsl':
         specifier: workspace:*
         version: link:../policy-dsl
 
   packages/cli:
     dependencies:
-      '@hexmon_tech/compiler':
+      '@hexmon_tech/acccess-control-compiler':
         specifier: workspace:*
         version: link:../compiler
-      '@hexmon_tech/core':
+      '@hexmon_tech/acccess-control-core':
         specifier: workspace:*
         version: link:../core
-      '@hexmon_tech/engine-embedded':
+      '@hexmon_tech/acccess-control-engine-embedded':
         specifier: workspace:*
         version: link:../engine-embedded
-      '@hexmon_tech/policy-dsl':
+      '@hexmon_tech/acccess-control-policy-dsl':
         specifier: workspace:*
         version: link:../policy-dsl
       commander:
@@ -70,7 +70,7 @@ importers:
 
   packages/compiler:
     dependencies:
-      '@hexmon_tech/policy-dsl':
+      '@hexmon_tech/acccess-control-policy-dsl':
         specifier: workspace:*
         version: link:../policy-dsl
 
@@ -78,22 +78,22 @@ importers:
 
   packages/engine-embedded:
     dependencies:
-      '@hexmon_tech/compiler':
+      '@hexmon_tech/acccess-control-compiler':
         specifier: workspace:*
         version: link:../compiler
-      '@hexmon_tech/core':
+      '@hexmon_tech/acccess-control-core':
         specifier: workspace:*
         version: link:../core
-      '@hexmon_tech/policy-dsl':
+      '@hexmon_tech/acccess-control-policy-dsl':
         specifier: workspace:*
         version: link:../policy-dsl
 
   packages/engine-hybrid:
     dependencies:
-      '@hexmon_tech/core':
+      '@hexmon_tech/acccess-control-core':
         specifier: workspace:*
         version: link:../core
-      '@hexmon_tech/engine-rebac':
+      '@hexmon_tech/acccess-control-engine-rebac':
         specifier: workspace:*
         version: link:../engine-rebac
 
@@ -101,7 +101,7 @@ importers:
 
   packages/integrations-express:
     dependencies:
-      '@hexmon_tech/core':
+      '@hexmon_tech/acccess-control-core':
         specifier: workspace:*
         version: link:../core
       '@types/express':
@@ -113,7 +113,7 @@ importers:
 
   packages/integrations-nest:
     dependencies:
-      '@hexmon_tech/core':
+      '@hexmon_tech/acccess-control-core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -132,7 +132,7 @@ importers:
 
   packages/integrations-next-node:
     dependencies:
-      '@hexmon_tech/core':
+      '@hexmon_tech/acccess-control-core':
         specifier: workspace:*
         version: link:../core
       next:

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import type { PolicySet } from '@hexmon_tech/policy-dsl';
+import type { PolicySet } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import { compilePolicySet, matchesAction } from '../src/compile';
 import { compileFieldSelectors } from '../src/fields/compileSelectors';

@@ -1,5 +1,5 @@
-import type { Action, Decision } from '@hexmon_tech/core';
-import { AcxError, MissingTenantError } from '@hexmon_tech/core';
+import type { Action, Decision } from '@hexmon_tech/acccess-control-core';
+import { AcxError, MissingTenantError } from '@hexmon_tech/acccess-control-core';
 
 import type { RouteHandler, ServerActionHandler, WithAuthzConfig } from './types';
 

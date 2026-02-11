@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-pnpm add -D @hexmon_tech/cli
+pnpm add -D @hexmon_tech/acccess-control-cli
 ```
 
 ## Commands
@@ -105,7 +105,7 @@ policy-tests/
 - run: pnpm install --frozen-lockfile
 - run: pnpm build
 - run: pnpm test
-- run: pnpm --filter @hexmon_tech/cli build
+- run: pnpm --filter @hexmon_tech/acccess-control-cli build
 - run: pnpm exec hexmon_tech validate examples/policies/basic.policy.json
 - run: pnpm exec hexmon_tech test examples/policy-tests/basic
 ```

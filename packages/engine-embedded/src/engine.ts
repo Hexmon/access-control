@@ -8,12 +8,12 @@ import type {
   Obligation,
   Reason,
   TraceEvent,
-} from '@hexmon_tech/core';
-import { assertTenant, createTraceId, normalizeFields } from '@hexmon_tech/core';
-import { EngineError } from '@hexmon_tech/core';
-import type { PolicyIR } from '@hexmon_tech/compiler';
-import { hashObject } from '@hexmon_tech/compiler';
-import type { CompiledRule, ConditionInput } from '@hexmon_tech/compiler';
+} from '@hexmon_tech/acccess-control-core';
+import { assertTenant, createTraceId, normalizeFields } from '@hexmon_tech/acccess-control-core';
+import { EngineError } from '@hexmon_tech/acccess-control-core';
+import type { PolicyIR } from '@hexmon_tech/acccess-control-compiler';
+import { hashObject } from '@hexmon_tech/acccess-control-compiler';
+import type { CompiledRule, ConditionInput } from '@hexmon_tech/acccess-control-compiler';
 
 import { buildRuleIndex, getCandidates, RuleIndex } from './indexes';
 import { buildRoleGraph, buildRoleRuleIndexes, resolveEffectiveRoles, RoleGraph } from './roles';

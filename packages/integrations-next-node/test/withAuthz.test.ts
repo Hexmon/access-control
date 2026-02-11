@@ -3,8 +3,8 @@ import type {
   AuthorizationInput,
   AuthorizationOptions,
   Decision,
-} from '@hexmon_tech/core';
-import { MissingTenantError } from '@hexmon_tech/core';
+} from '@hexmon_tech/acccess-control-core';
+import { MissingTenantError } from '@hexmon_tech/acccess-control-core';
 import { describe, expect, it, vi } from 'vitest';
 
 import { AuthzDeniedError, withAuthz } from '../src/withAuthz';

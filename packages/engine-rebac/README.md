@@ -1,17 +1,17 @@
-# @hexmon_tech/engine-rebac
+# @hexmon_tech/acccess-control-engine-rebac
 
 ReBAC adapter contract and in-memory adapter for direct tuple checks.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/engine-rebac
+pnpm add @hexmon_tech/acccess-control-engine-rebac
 ```
 
 ## Minimal Usage
 
 ```ts
-import { InMemoryRebacAdapter } from '@hexmon_tech/engine-rebac';
+import { InMemoryRebacAdapter } from '@hexmon_tech/acccess-control-engine-rebac';
 
 const adapter = new InMemoryRebacAdapter();
 await adapter.writeTuples([
@@ -45,7 +45,7 @@ const result = await adapter.check({
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/engine-rebac typecheck
-pnpm --filter @hexmon_tech/engine-rebac test
-pnpm --filter @hexmon_tech/engine-rebac build
+pnpm --filter @hexmon_tech/acccess-control-engine-rebac typecheck
+pnpm --filter @hexmon_tech/acccess-control-engine-rebac test
+pnpm --filter @hexmon_tech/acccess-control-engine-rebac build
 ```

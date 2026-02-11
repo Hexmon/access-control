@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/engine-hybrid",
+  "name": "@hexmon_tech/acccess-control-engine-hybrid",
   "version": "0.1.0",
   "description": "@hexmon_tech hybrid engine package.",
   "license": "MIT",
@@ -23,8 +23,8 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@hexmon_tech/core": "workspace:*",
-    "@hexmon_tech/engine-rebac": "workspace:*"
+    "@hexmon_tech/acccess-control-core": "workspace:*",
+    "@hexmon_tech/acccess-control-engine-rebac": "workspace:*"
   },
   "scripts": {
     "build": "tsup",

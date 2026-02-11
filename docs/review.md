@@ -51,7 +51,7 @@
 
 ## Per-Package Review
 
-### `@hexmon_tech/core`
+### `@hexmon_tech/acccess-control-core`
 
 - Purpose: shared authorization types/contracts, stable error model, helper utilities.
 - Key exports: `AuthorizationEngine`, `AuthorizationInput`, `Decision`, `AcxError` classes, capabilities, helpers.
@@ -59,13 +59,13 @@
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/core typecheck
-pnpm --filter @hexmon_tech/core test
-pnpm --filter @hexmon_tech/core build
-pnpm --filter @hexmon_tech/core pack:check
+pnpm --filter @hexmon_tech/acccess-control-core typecheck
+pnpm --filter @hexmon_tech/acccess-control-core test
+pnpm --filter @hexmon_tech/acccess-control-core build
+pnpm --filter @hexmon_tech/acccess-control-core pack:check
 ```
 
-### `@hexmon_tech/policy-dsl`
+### `@hexmon_tech/acccess-control-policy-dsl`
 
 - Purpose: policy schema/types/validation and builder.
 - Key exports: `validatePolicySet`, `policySet`, `policySetSchema`, DSL types.
@@ -73,13 +73,13 @@ pnpm --filter @hexmon_tech/core pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/policy-dsl typecheck
-pnpm --filter @hexmon_tech/policy-dsl test
-pnpm --filter @hexmon_tech/policy-dsl build
-pnpm --filter @hexmon_tech/policy-dsl pack:check
+pnpm --filter @hexmon_tech/acccess-control-policy-dsl typecheck
+pnpm --filter @hexmon_tech/acccess-control-policy-dsl test
+pnpm --filter @hexmon_tech/acccess-control-policy-dsl build
+pnpm --filter @hexmon_tech/acccess-control-policy-dsl pack:check
 ```
 
-### `@hexmon_tech/compiler`
+### `@hexmon_tech/acccess-control-compiler`
 
 - Purpose: compile DSL to IR, diagnostics, safe condition evaluation, stable hashing.
 - Key exports: `compilePolicySet`, `evaluateCondition`, selector compiler, hash utilities.
@@ -87,13 +87,13 @@ pnpm --filter @hexmon_tech/policy-dsl pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/compiler typecheck
-pnpm --filter @hexmon_tech/compiler test
-pnpm --filter @hexmon_tech/compiler build
-pnpm --filter @hexmon_tech/compiler pack:check
+pnpm --filter @hexmon_tech/acccess-control-compiler typecheck
+pnpm --filter @hexmon_tech/acccess-control-compiler test
+pnpm --filter @hexmon_tech/acccess-control-compiler build
+pnpm --filter @hexmon_tech/acccess-control-compiler pack:check
 ```
 
-### `@hexmon_tech/engine-embedded`
+### `@hexmon_tech/acccess-control-engine-embedded`
 
 - Purpose: deterministic embedded engine with deny-by-default, deny-overrides-allow, field obligations, cache, trace.
 - Key exports: `EmbeddedEngine`.
@@ -101,14 +101,14 @@ pnpm --filter @hexmon_tech/compiler pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/engine-embedded typecheck
-pnpm --filter @hexmon_tech/engine-embedded test
-pnpm --filter @hexmon_tech/engine-embedded build
-pnpm --filter @hexmon_tech/engine-embedded pack:check
+pnpm --filter @hexmon_tech/acccess-control-engine-embedded typecheck
+pnpm --filter @hexmon_tech/acccess-control-engine-embedded test
+pnpm --filter @hexmon_tech/acccess-control-engine-embedded build
+pnpm --filter @hexmon_tech/acccess-control-engine-embedded pack:check
 node packages/engine-embedded/bench/run.mjs
 ```
 
-### `@hexmon_tech/engine-rebac`
+### `@hexmon_tech/acccess-control-engine-rebac`
 
 - Purpose: ReBAC interface and direct in-memory tuple adapter.
 - Key exports: `RebacAdapter`, `InMemoryRebacAdapter`, tuple/check/list types.
@@ -116,13 +116,13 @@ node packages/engine-embedded/bench/run.mjs
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/engine-rebac typecheck
-pnpm --filter @hexmon_tech/engine-rebac test
-pnpm --filter @hexmon_tech/engine-rebac build
-pnpm --filter @hexmon_tech/engine-rebac pack:check
+pnpm --filter @hexmon_tech/acccess-control-engine-rebac typecheck
+pnpm --filter @hexmon_tech/acccess-control-engine-rebac test
+pnpm --filter @hexmon_tech/acccess-control-engine-rebac build
+pnpm --filter @hexmon_tech/acccess-control-engine-rebac pack:check
 ```
 
-### `@hexmon_tech/adapter-openfga`
+### `@hexmon_tech/acccess-control-adapter-openfga`
 
 - Purpose: OpenFGA skeleton adapter with mockable client contract.
 - Key exports: `OpenFgaRebacAdapter`, client/type contracts.
@@ -130,13 +130,13 @@ pnpm --filter @hexmon_tech/engine-rebac pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/adapter-openfga typecheck
-pnpm --filter @hexmon_tech/adapter-openfga test
-pnpm --filter @hexmon_tech/adapter-openfga build
-pnpm --filter @hexmon_tech/adapter-openfga pack:check
+pnpm --filter @hexmon_tech/acccess-control-adapter-openfga typecheck
+pnpm --filter @hexmon_tech/acccess-control-adapter-openfga test
+pnpm --filter @hexmon_tech/acccess-control-adapter-openfga build
+pnpm --filter @hexmon_tech/acccess-control-adapter-openfga pack:check
 ```
 
-### `@hexmon_tech/engine-hybrid`
+### `@hexmon_tech/acccess-control-engine-hybrid`
 
 - Purpose: compose embedded + ReBAC with deterministic final allow semantics.
 - Key exports: `HybridEngine`, match helpers.
@@ -144,13 +144,13 @@ pnpm --filter @hexmon_tech/adapter-openfga pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/engine-hybrid typecheck
-pnpm --filter @hexmon_tech/engine-hybrid test
-pnpm --filter @hexmon_tech/engine-hybrid build
-pnpm --filter @hexmon_tech/engine-hybrid pack:check
+pnpm --filter @hexmon_tech/acccess-control-engine-hybrid typecheck
+pnpm --filter @hexmon_tech/acccess-control-engine-hybrid test
+pnpm --filter @hexmon_tech/acccess-control-engine-hybrid build
+pnpm --filter @hexmon_tech/acccess-control-engine-hybrid pack:check
 ```
 
-### `@hexmon_tech/audit`
+### `@hexmon_tech/acccess-control-audit`
 
 - Purpose: versionable audit events, sink abstraction, batched sink, SoD/assignment constraints.
 - Key exports: `AuditEvent`, `AuditSink`, `ConsoleSink`, `BatchingSink`, `validateRoleAssignment`.
@@ -158,13 +158,13 @@ pnpm --filter @hexmon_tech/engine-hybrid pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/audit typecheck
-pnpm --filter @hexmon_tech/audit test
-pnpm --filter @hexmon_tech/audit build
-pnpm --filter @hexmon_tech/audit pack:check
+pnpm --filter @hexmon_tech/acccess-control-audit typecheck
+pnpm --filter @hexmon_tech/acccess-control-audit test
+pnpm --filter @hexmon_tech/acccess-control-audit build
+pnpm --filter @hexmon_tech/acccess-control-audit pack:check
 ```
 
-### `@hexmon_tech/integrations-express`
+### `@hexmon_tech/acccess-control-integrations-express`
 
 - Purpose: Express middleware and error mapping with `req.authzDecision` attachment.
 - Key exports: `requireAuthz`, `createAuthzErrorHandler`, integration types.
@@ -172,13 +172,13 @@ pnpm --filter @hexmon_tech/audit pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/integrations-express typecheck
-pnpm --filter @hexmon_tech/integrations-express test
-pnpm --filter @hexmon_tech/integrations-express build
-pnpm --filter @hexmon_tech/integrations-express pack:check
+pnpm --filter @hexmon_tech/acccess-control-integrations-express typecheck
+pnpm --filter @hexmon_tech/acccess-control-integrations-express test
+pnpm --filter @hexmon_tech/acccess-control-integrations-express build
+pnpm --filter @hexmon_tech/acccess-control-integrations-express pack:check
 ```
 
-### `@hexmon_tech/integrations-next-node`
+### `@hexmon_tech/acccess-control-integrations-next-node`
 
 - Purpose: wrappers for Next.js Node route handlers and server actions.
 - Key exports: `withAuthz`, `AuthzDeniedError`, `getPrincipalFromRequest` placeholder.
@@ -186,13 +186,13 @@ pnpm --filter @hexmon_tech/integrations-express pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/integrations-next-node typecheck
-pnpm --filter @hexmon_tech/integrations-next-node test
-pnpm --filter @hexmon_tech/integrations-next-node build
-pnpm --filter @hexmon_tech/integrations-next-node pack:check
+pnpm --filter @hexmon_tech/acccess-control-integrations-next-node typecheck
+pnpm --filter @hexmon_tech/acccess-control-integrations-next-node test
+pnpm --filter @hexmon_tech/acccess-control-integrations-next-node build
+pnpm --filter @hexmon_tech/acccess-control-integrations-next-node pack:check
 ```
 
-### `@hexmon_tech/integrations-nest`
+### `@hexmon_tech/acccess-control-integrations-nest`
 
 - Purpose: decorators, guard, and module registration for NestJS.
 - Key exports: `AuthzAction`, `AuthzResource`, `AuthzGuard`, `AuthzModule`, tokens/interfaces.
@@ -200,13 +200,13 @@ pnpm --filter @hexmon_tech/integrations-next-node pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/integrations-nest typecheck
-pnpm --filter @hexmon_tech/integrations-nest test
-pnpm --filter @hexmon_tech/integrations-nest build
-pnpm --filter @hexmon_tech/integrations-nest pack:check
+pnpm --filter @hexmon_tech/acccess-control-integrations-nest typecheck
+pnpm --filter @hexmon_tech/acccess-control-integrations-nest test
+pnpm --filter @hexmon_tech/acccess-control-integrations-nest build
+pnpm --filter @hexmon_tech/acccess-control-integrations-nest pack:check
 ```
 
-### `@hexmon_tech/cli`
+### `@hexmon_tech/acccess-control-cli`
 
 - Purpose: policy lifecycle devtools (`init`, `validate`, `test`, `types`, `diff`).
 - Key exports: CLI binary (`hexmon_tech`), `runCli`, command handlers.
@@ -214,10 +214,10 @@ pnpm --filter @hexmon_tech/integrations-nest pack:check
 - Verify:
 
 ```bash
-pnpm --filter @hexmon_tech/cli typecheck
-pnpm --filter @hexmon_tech/cli test
-pnpm --filter @hexmon_tech/cli build
-pnpm --filter @hexmon_tech/cli pack:check
+pnpm --filter @hexmon_tech/acccess-control-cli typecheck
+pnpm --filter @hexmon_tech/acccess-control-cli test
+pnpm --filter @hexmon_tech/acccess-control-cli build
+pnpm --filter @hexmon_tech/acccess-control-cli pack:check
 node packages/cli/dist/bin.cjs validate examples/policies/basic.policy.json
 ```
 

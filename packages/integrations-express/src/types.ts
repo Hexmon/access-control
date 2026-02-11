@@ -5,7 +5,7 @@ import type {
   Decision,
   Principal,
   Resource,
-} from '@hexmon_tech/core';
+} from '@hexmon_tech/acccess-control-core';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {

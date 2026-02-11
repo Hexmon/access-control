@@ -1,4 +1,4 @@
-import { stableStringify } from '@hexmon_tech/compiler';
+import { stableStringify } from '@hexmon_tech/acccess-control-compiler';
 import type {
   FieldSelection,
   PolicyConstraints,
@@ -6,7 +6,7 @@ import type {
   PolicySet,
   RoleDefinition,
   RolePermission,
-} from '@hexmon_tech/policy-dsl';
+} from '@hexmon_tech/acccess-control-policy-dsl';
 
 import type { CommandContext } from './shared';
 import { loadPolicy, printDiagnostics, validateAndCompile } from './shared';

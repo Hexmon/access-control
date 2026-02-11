@@ -1,18 +1,22 @@
-# @hexmon_tech/integrations-nest
+# @hexmon_tech/acccess-control-integrations-nest
 
 NestJS decorators, guard, and module wiring for authorization enforcement.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/integrations-nest
+pnpm add @hexmon_tech/acccess-control-integrations-nest
 ```
 
 ## Minimal Usage
 
 ```ts
 import { UseGuards } from '@nestjs/common';
-import { AuthzAction, AuthzGuard, AuthzResource } from '@hexmon_tech/integrations-nest';
+import {
+  AuthzAction,
+  AuthzGuard,
+  AuthzResource,
+} from '@hexmon_tech/acccess-control-integrations-nest';
 
 @UseGuards(AuthzGuard)
 @AuthzAction('post:read')
@@ -35,7 +39,7 @@ class PostController {}
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/integrations-nest typecheck
-pnpm --filter @hexmon_tech/integrations-nest test
-pnpm --filter @hexmon_tech/integrations-nest build
+pnpm --filter @hexmon_tech/acccess-control-integrations-nest typecheck
+pnpm --filter @hexmon_tech/acccess-control-integrations-nest test
+pnpm --filter @hexmon_tech/acccess-control-integrations-nest build
 ```

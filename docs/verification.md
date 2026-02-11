@@ -39,10 +39,10 @@ pnpm --filter @hexmon_tech/<package> pack:check
 Example:
 
 ```bash
-pnpm --filter @hexmon_tech/compiler typecheck
-pnpm --filter @hexmon_tech/compiler test
-pnpm --filter @hexmon_tech/compiler build
-pnpm --filter @hexmon_tech/compiler pack:check
+pnpm --filter @hexmon_tech/acccess-control-compiler typecheck
+pnpm --filter @hexmon_tech/acccess-control-compiler test
+pnpm --filter @hexmon_tech/acccess-control-compiler build
+pnpm --filter @hexmon_tech/acccess-control-compiler pack:check
 ```
 
 ## Packaging Simulation (`npm`/`pnpm pack`)
@@ -65,12 +65,12 @@ What it validates for each package:
 
 The smoke runner validates:
 
-- ESM import of `@hexmon_tech/core`
-- CJS require of `@hexmon_tech/core`
-- policy validation via `@hexmon_tech/policy-dsl`
-- compilation via `@hexmon_tech/compiler`
-- authorization allow/deny via `@hexmon_tech/engine-embedded`
-- CLI commands (`validate`, `types`, `test`) via `@hexmon_tech/cli`
+- ESM import of `@hexmon_tech/acccess-control-core`
+- CJS require of `@hexmon_tech/acccess-control-core`
+- policy validation via `@hexmon_tech/acccess-control-policy-dsl`
+- compilation via `@hexmon_tech/acccess-control-compiler`
+- authorization allow/deny via `@hexmon_tech/acccess-control-engine-embedded`
+- CLI commands (`validate`, `types`, `test`) via `@hexmon_tech/acccess-control-cli`
 
 Run:
 
@@ -82,7 +82,7 @@ pnpm smoke-tests
 ## CLI Verification
 
 ```bash
-pnpm --filter @hexmon_tech/cli build
+pnpm --filter @hexmon_tech/acccess-control-cli build
 node packages/cli/dist/bin.cjs validate examples/policies/basic.policy.json
 node packages/cli/dist/bin.cjs types examples/policies/basic.policy.json --out /tmp/policy-types.ts
 node packages/cli/dist/bin.cjs test examples/policy-tests/basic --policy examples/policies/basic.policy.json
@@ -92,7 +92,7 @@ node packages/cli/dist/bin.cjs diff examples/policies/basic.policy.json examples
 ## Benchmark Verification
 
 ```bash
-pnpm --filter @hexmon_tech/engine-embedded build
+pnpm --filter @hexmon_tech/acccess-control-engine-embedded build
 node packages/engine-embedded/bench/run.mjs
 ```
 

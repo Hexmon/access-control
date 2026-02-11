@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/audit",
+  "name": "@hexmon_tech/acccess-control-audit",
   "version": "0.1.0",
   "description": "@hexmon_tech audit package.",
   "license": "MIT",
@@ -23,7 +23,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@hexmon_tech/policy-dsl": "workspace:*"
+    "@hexmon_tech/acccess-control-policy-dsl": "workspace:*"
   },
   "scripts": {
     "build": "tsup",

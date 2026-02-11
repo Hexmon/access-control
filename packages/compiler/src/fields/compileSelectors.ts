@@ -1,4 +1,4 @@
-import type { FieldSelection } from '@hexmon_tech/policy-dsl';
+import type { FieldSelection } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import type { CompiledFieldSelectors, FieldSelectorMatcher } from '../ir';
 

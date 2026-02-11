@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import type { PolicyConstraints } from '@hexmon_tech/policy-dsl';
+import type { PolicyConstraints } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import { type RoleDirectory, validateRoleAssignment } from '../src/constraints';
 

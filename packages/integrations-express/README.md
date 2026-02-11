@@ -1,17 +1,20 @@
-# @hexmon_tech/integrations-express
+# @hexmon_tech/acccess-control-integrations-express
 
 Express middleware and error handling helpers for authorization checks.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/integrations-express
+pnpm add @hexmon_tech/acccess-control-integrations-express
 ```
 
 ## Minimal Usage
 
 ```ts
-import { requireAuthz, createAuthzErrorHandler } from '@hexmon_tech/integrations-express';
+import {
+  requireAuthz,
+  createAuthzErrorHandler,
+} from '@hexmon_tech/acccess-control-integrations-express';
 
 app.patch(
   '/posts/:id',
@@ -42,7 +45,7 @@ app.use(createAuthzErrorHandler({ missingTenantStatus: 401 }));
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/integrations-express typecheck
-pnpm --filter @hexmon_tech/integrations-express test
-pnpm --filter @hexmon_tech/integrations-express build
+pnpm --filter @hexmon_tech/acccess-control-integrations-express typecheck
+pnpm --filter @hexmon_tech/acccess-control-integrations-express test
+pnpm --filter @hexmon_tech/acccess-control-integrations-express build
 ```

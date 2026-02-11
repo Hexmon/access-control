@@ -1,8 +1,8 @@
-import type { RoleDefinition, RolePermission } from '@hexmon_tech/policy-dsl';
-import type { CompiledRule, ConditionInput } from '@hexmon_tech/compiler';
+import type { RoleDefinition, RolePermission } from '@hexmon_tech/acccess-control-policy-dsl';
+import type { CompiledRule, ConditionInput } from '@hexmon_tech/acccess-control-compiler';
 
-import { evaluateCondition } from '@hexmon_tech/compiler';
-import { compileFieldSelectors } from '@hexmon_tech/compiler';
+import { evaluateCondition } from '@hexmon_tech/acccess-control-compiler';
+import { compileFieldSelectors } from '@hexmon_tech/acccess-control-compiler';
 
 import type { RuleIndex } from './indexes';
 import { buildRuleIndex } from './indexes';

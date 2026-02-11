@@ -19,7 +19,7 @@ async function main() {
     [
       '--input-type=module',
       '-e',
-      "import { normalizeFields } from '@hexmon_tech/core'; const out = JSON.stringify(normalizeFields(['b','a','a'])); if (out !== JSON.stringify(['a','b'])) throw new Error('esm core failed');",
+      "import { normalizeFields } from '@hexmon_tech/acccess-control-core'; const out = JSON.stringify(normalizeFields(['b','a','a'])); if (out !== JSON.stringify(['a','b'])) throw new Error('esm core failed');",
     ],
     packageContext,
   );
@@ -27,7 +27,7 @@ async function main() {
   runNode(
     [
       '-e',
-      "const { normalizeFields } = require('@hexmon_tech/core'); const out = JSON.stringify(normalizeFields(['z','y','y'])); if (out !== JSON.stringify(['y','z'])) throw new Error('cjs core failed');",
+      "const { normalizeFields } = require('@hexmon_tech/acccess-control-core'); const out = JSON.stringify(normalizeFields(['z','y','y'])); if (out !== JSON.stringify(['y','z'])) throw new Error('cjs core failed');",
     ],
     packageContext,
   );
@@ -38,7 +38,7 @@ async function main() {
     [
       '--input-type=module',
       '-e',
-      "import fs from 'node:fs'; import { validatePolicySet } from '@hexmon_tech/policy-dsl'; import { compilePolicySet } from '@hexmon_tech/compiler'; import { EmbeddedEngine } from '@hexmon_tech/engine-embedded'; const policy = JSON.parse(fs.readFileSync(process.env.ACX_POLICY, 'utf8')); const valid = validatePolicySet(policy); if (!valid.ok) throw new Error('policy invalid'); const { ir, diagnostics } = compilePolicySet(policy, { mode: 'single-tenant' }); if (diagnostics.some((d) => d.level === 'error')) throw new Error('compile errors'); const engine = new EmbeddedEngine({ mode: 'single-tenant' }); engine.setPolicy(ir); const allow = await engine.authorize({ principal: { id: 'u1', type: 'user', tenantId: 'tenant-a' }, resource: { type: 'post', id: 'p1' }, action: { name: 'post:read' }, context: { tenantId: 'tenant-a' } }); const deny = await engine.authorize({ principal: { id: 'u1', type: 'user', tenantId: 'tenant-a' }, resource: { type: 'post', id: 'p1' }, action: { name: 'post:delete' }, context: { tenantId: 'tenant-a' } }); if (!allow.allow || deny.allow) throw new Error('engine smoke failed');",
+      "import fs from 'node:fs'; import { validatePolicySet } from '@hexmon_tech/acccess-control-policy-dsl'; import { compilePolicySet } from '@hexmon_tech/acccess-control-compiler'; import { EmbeddedEngine } from '@hexmon_tech/acccess-control-engine-embedded'; const policy = JSON.parse(fs.readFileSync(process.env.ACX_POLICY, 'utf8')); const valid = validatePolicySet(policy); if (!valid.ok) throw new Error('policy invalid'); const { ir, diagnostics } = compilePolicySet(policy, { mode: 'single-tenant' }); if (diagnostics.some((d) => d.level === 'error')) throw new Error('compile errors'); const engine = new EmbeddedEngine({ mode: 'single-tenant' }); engine.setPolicy(ir); const allow = await engine.authorize({ principal: { id: 'u1', type: 'user', tenantId: 'tenant-a' }, resource: { type: 'post', id: 'p1' }, action: { name: 'post:read' }, context: { tenantId: 'tenant-a' } }); const deny = await engine.authorize({ principal: { id: 'u1', type: 'user', tenantId: 'tenant-a' }, resource: { type: 'post', id: 'p1' }, action: { name: 'post:delete' }, context: { tenantId: 'tenant-a' } }); if (!allow.allow || deny.allow) throw new Error('engine smoke failed');",
     ],
     packageContext,
     { ACX_POLICY: policyPath },

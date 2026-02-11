@@ -1,5 +1,5 @@
-import type { TenantScope } from '@hexmon_tech/policy-dsl';
-import type { CompiledRule } from '@hexmon_tech/compiler';
+import type { TenantScope } from '@hexmon_tech/acccess-control-policy-dsl';
+import type { CompiledRule } from '@hexmon_tech/acccess-control-compiler';
 
 interface ActionIndex {
   exact: Map<string, CompiledRule[]>;

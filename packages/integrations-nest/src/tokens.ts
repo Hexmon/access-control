@@ -1,4 +1,9 @@
-import type { AuthorizationEngine, Context, Decision, Principal } from '@hexmon_tech/core';
+import type {
+  AuthorizationEngine,
+  Context,
+  Decision,
+  Principal,
+} from '@hexmon_tech/acccess-control-core';
 import type { ExecutionContext } from '@nestjs/common';
 
 /** Engine provider type used by the Nest integration. */

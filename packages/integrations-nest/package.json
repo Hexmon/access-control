@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/integrations-nest",
+  "name": "@hexmon_tech/acccess-control-integrations-nest",
   "version": "0.1.0",
   "description": "@hexmon_tech integrations-nest package.",
   "license": "MIT",
@@ -23,7 +23,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@hexmon_tech/core": "workspace:*"
+    "@hexmon_tech/acccess-control-core": "workspace:*"
   },
   "peerDependencies": {
     "@nestjs/common": "^10.0.0",

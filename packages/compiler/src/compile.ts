@@ -1,4 +1,4 @@
-import type { PolicySet, PolicyEffect, TenantScope } from '@hexmon_tech/policy-dsl';
+import type { PolicySet, PolicyEffect, TenantScope } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import { evaluateCondition } from './conditions/eval';
 import type {

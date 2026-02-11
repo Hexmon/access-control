@@ -1,9 +1,9 @@
 import path from 'node:path';
 
-import { stableStringify } from '@hexmon_tech/compiler';
-import { compilePolicySet } from '@hexmon_tech/compiler';
-import { EmbeddedEngine } from '@hexmon_tech/engine-embedded';
-import type { AuthorizationInput, Obligation } from '@hexmon_tech/core';
+import { stableStringify } from '@hexmon_tech/acccess-control-compiler';
+import { compilePolicySet } from '@hexmon_tech/acccess-control-compiler';
+import { EmbeddedEngine } from '@hexmon_tech/acccess-control-engine-embedded';
+import type { AuthorizationInput, Obligation } from '@hexmon_tech/acccess-control-core';
 
 import { listFilesRecursive, readJson, resolvePath } from '../fs';
 import type { CommandContext } from './shared';

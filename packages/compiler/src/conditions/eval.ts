@@ -1,4 +1,4 @@
-import type { Condition, Ref, RefOrValue } from '@hexmon_tech/policy-dsl';
+import type { Condition, Ref, RefOrValue } from '@hexmon_tech/acccess-control-policy-dsl';
 
 import type { ConditionInput } from '../ir';
 
@@ -119,12 +119,7 @@ function isEqual(left: unknown, right: unknown): boolean {
     return true;
   }
 
-  if (
-    typeof left !== 'object' ||
-    typeof right !== 'object' ||
-    left === null ||
-    right === null
-  ) {
+  if (typeof left !== 'object' || typeof right !== 'object' || left === null || right === null) {
     return false;
   }
 

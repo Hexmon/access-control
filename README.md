@@ -12,18 +12,18 @@ V1 ships the embedded engine first; adapters are layered on top.
 
 Package inventory with entry exports: [`docs/packages.md`](docs/packages.md).
 
-- [`@hexmon_tech/core`](packages/core): core types, errors, capability flags, helper utilities.
-- [`@hexmon_tech/policy-dsl`](packages/policy-dsl): JSON policy DSL schema, validation, and builder.
-- [`@hexmon_tech/compiler`](packages/compiler): policy compiler to deterministic IR + diagnostics + hashing.
-- [`@hexmon_tech/engine-embedded`](packages/engine-embedded): in-process policy evaluation engine.
-- [`@hexmon_tech/engine-rebac`](packages/engine-rebac): ReBAC adapter contract + in-memory adapter.
-- [`@hexmon_tech/adapter-openfga`](packages/adapter-openfga): OpenFGA adapter skeleton (mockable client contract).
-- [`@hexmon_tech/engine-hybrid`](packages/engine-hybrid): embedded + ReBAC composition engine.
-- [`@hexmon_tech/audit`](packages/audit): audit events, sinks, and role-assignment constraints.
-- [`@hexmon_tech/integrations-express`](packages/integrations-express): Express middleware + error mapper.
-- [`@hexmon_tech/integrations-next-node`](packages/integrations-next-node): Next.js Node runtime wrappers.
-- [`@hexmon_tech/integrations-nest`](packages/integrations-nest): Nest decorators/guard/module.
-- [`@hexmon_tech/cli`](packages/cli): policy devtools CLI (`hexmon_tech`).
+- [`@hexmon_tech/acccess-control-core`](packages/core): core types, errors, capability flags, helper utilities.
+- [`@hexmon_tech/acccess-control-policy-dsl`](packages/policy-dsl): JSON policy DSL schema, validation, and builder.
+- [`@hexmon_tech/acccess-control-compiler`](packages/compiler): policy compiler to deterministic IR + diagnostics + hashing.
+- [`@hexmon_tech/acccess-control-engine-embedded`](packages/engine-embedded): in-process policy evaluation engine.
+- [`@hexmon_tech/acccess-control-engine-rebac`](packages/engine-rebac): ReBAC adapter contract + in-memory adapter.
+- [`@hexmon_tech/acccess-control-adapter-openfga`](packages/adapter-openfga): OpenFGA adapter skeleton (mockable client contract).
+- [`@hexmon_tech/acccess-control-engine-hybrid`](packages/engine-hybrid): embedded + ReBAC composition engine.
+- [`@hexmon_tech/acccess-control-audit`](packages/audit): audit events, sinks, and role-assignment constraints.
+- [`@hexmon_tech/acccess-control-integrations-express`](packages/integrations-express): Express middleware + error mapper.
+- [`@hexmon_tech/acccess-control-integrations-next-node`](packages/integrations-next-node): Next.js Node runtime wrappers.
+- [`@hexmon_tech/acccess-control-integrations-nest`](packages/integrations-nest): Nest decorators/guard/module.
+- [`@hexmon_tech/acccess-control-cli`](packages/cli): policy devtools CLI (`hexmon_tech`).
 
 ## Repository Verification
 

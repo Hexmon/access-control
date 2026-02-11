@@ -25,7 +25,11 @@ export function createProgram(
 ): Command {
   const program = new Command();
 
-  program.name('hexmon_tech').description('@hexmon_tech policy CLI utilities').showHelpAfterError().exitOverride();
+  program
+    .name('acx')
+    .description('@hexmon_tech policy CLI utilities')
+    .showHelpAfterError()
+    .exitOverride();
 
   program
     .command('init')

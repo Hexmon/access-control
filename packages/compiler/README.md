@@ -1,17 +1,17 @@
-# @hexmon_tech/compiler
+# @hexmon_tech/acccess-control-compiler
 
 Compiles policy DSL into deterministic IR, performs semantic diagnostics, and computes stable hashes.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/compiler
+pnpm add @hexmon_tech/acccess-control-compiler
 ```
 
 ## Minimal Usage
 
 ```ts
-import { compilePolicySet } from '@hexmon_tech/compiler';
+import { compilePolicySet } from '@hexmon_tech/acccess-control-compiler';
 
 const { ir, diagnostics } = compilePolicySet(policySet, { mode: 'multi-tenant' });
 ```
@@ -31,7 +31,7 @@ const { ir, diagnostics } = compilePolicySet(policySet, { mode: 'multi-tenant' }
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/compiler typecheck
-pnpm --filter @hexmon_tech/compiler test
-pnpm --filter @hexmon_tech/compiler build
+pnpm --filter @hexmon_tech/acccess-control-compiler typecheck
+pnpm --filter @hexmon_tech/acccess-control-compiler test
+pnpm --filter @hexmon_tech/acccess-control-compiler build
 ```

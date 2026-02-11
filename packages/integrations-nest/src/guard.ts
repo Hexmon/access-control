@@ -16,7 +16,7 @@ import {
   InvalidPolicyError,
   MissingTenantError,
   normalizeFields,
-} from '@hexmon_tech/core';
+} from '@hexmon_tech/acccess-control-core';
 
 import {
   AUTHZ_ACTION_METADATA,

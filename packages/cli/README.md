@@ -1,11 +1,11 @@
-# @hexmon_tech/cli
+# @hexmon_tech/acccess-control-cli
 
 Developer CLI for policy validation, type generation, diffing, golden tests, and scaffolding.
 
 ## Install
 
 ```bash
-pnpm add -D @hexmon_tech/cli
+pnpm add -D @hexmon_tech/acccess-control-cli
 ```
 
 ## Commands
@@ -31,8 +31,8 @@ hexmon_tech diff examples/policies/basic.policy.json examples/policies/multi-ten
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/cli typecheck
-pnpm --filter @hexmon_tech/cli test
-pnpm --filter @hexmon_tech/cli build
+pnpm --filter @hexmon_tech/acccess-control-cli typecheck
+pnpm --filter @hexmon_tech/acccess-control-cli test
+pnpm --filter @hexmon_tech/acccess-control-cli build
 node packages/cli/dist/bin.cjs --help
 ```

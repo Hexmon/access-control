@@ -1,17 +1,17 @@
-# @hexmon_tech/adapter-openfga
+# @hexmon_tech/acccess-control-adapter-openfga
 
 OpenFGA adapter skeleton with mockable client interface; no runtime OpenFGA SDK dependency required.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/adapter-openfga
+pnpm add @hexmon_tech/acccess-control-adapter-openfga
 ```
 
 ## Minimal Usage
 
 ```ts
-import { OpenFgaRebacAdapter } from '@hexmon_tech/adapter-openfga';
+import { OpenFgaRebacAdapter } from '@hexmon_tech/acccess-control-adapter-openfga';
 
 const adapter = new OpenFgaRebacAdapter(mockClient, {
   storeId: 'store-id',
@@ -33,7 +33,7 @@ const adapter = new OpenFgaRebacAdapter(mockClient, {
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/adapter-openfga typecheck
-pnpm --filter @hexmon_tech/adapter-openfga test
-pnpm --filter @hexmon_tech/adapter-openfga build
+pnpm --filter @hexmon_tech/acccess-control-adapter-openfga typecheck
+pnpm --filter @hexmon_tech/acccess-control-adapter-openfga test
+pnpm --filter @hexmon_tech/acccess-control-adapter-openfga build
 ```

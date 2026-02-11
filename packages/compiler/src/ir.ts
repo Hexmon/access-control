@@ -3,7 +3,7 @@ import type {
   PolicyEffect,
   RoleDefinition,
   TenantScope,
-} from '@hexmon_tech/policy-dsl';
+} from '@hexmon_tech/acccess-control-policy-dsl';
 
 /** Matchers for action strings with optional wildcard prefixes. */
 export interface ActionMatcher {

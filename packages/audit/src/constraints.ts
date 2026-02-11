@@ -1,4 +1,4 @@
-import type { PolicyConstraints } from '@hexmon_tech/policy-dsl';
+import type { PolicyConstraints } from '@hexmon_tech/acccess-control-policy-dsl';
 
 /** Read-only role directory used to validate role assignment constraints. */
 export interface RoleDirectory {

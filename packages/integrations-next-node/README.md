@@ -1,17 +1,17 @@
-# @hexmon_tech/integrations-next-node
+# @hexmon_tech/acccess-control-integrations-next-node
 
 Authorization wrappers for Next.js Node runtime route handlers and server actions.
 
 ## Install
 
 ```bash
-pnpm add @hexmon_tech/integrations-next-node
+pnpm add @hexmon_tech/acccess-control-integrations-next-node
 ```
 
 ## Minimal Usage
 
 ```ts
-import { withAuthz } from '@hexmon_tech/integrations-next-node';
+import { withAuthz } from '@hexmon_tech/acccess-control-integrations-next-node';
 
 export const POST = withAuthz(async (req: Request) => new Response(null, { status: 204 }), {
   engine,
@@ -36,7 +36,7 @@ export const POST = withAuthz(async (req: Request) => new Response(null, { statu
 ## Verify
 
 ```bash
-pnpm --filter @hexmon_tech/integrations-next-node typecheck
-pnpm --filter @hexmon_tech/integrations-next-node test
-pnpm --filter @hexmon_tech/integrations-next-node build
+pnpm --filter @hexmon_tech/acccess-control-integrations-next-node typecheck
+pnpm --filter @hexmon_tech/acccess-control-integrations-next-node test
+pnpm --filter @hexmon_tech/acccess-control-integrations-next-node build
 ```

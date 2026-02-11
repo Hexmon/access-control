@@ -1,5 +1,5 @@
 {
-  "name": "@hexmon_tech/engine-embedded",
+  "name": "@hexmon_tech/acccess-control-engine-embedded",
   "version": "0.1.0",
   "description": "@hexmon_tech engine-embedded package.",
   "license": "MIT",
@@ -23,9 +23,9 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@hexmon_tech/compiler": "workspace:*",
-    "@hexmon_tech/core": "workspace:*",
-    "@hexmon_tech/policy-dsl": "workspace:*"
+    "@hexmon_tech/acccess-control-compiler": "workspace:*",
+    "@hexmon_tech/acccess-control-core": "workspace:*",
+    "@hexmon_tech/acccess-control-policy-dsl": "workspace:*"
   },
   "scripts": {
     "build": "tsup",

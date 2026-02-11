@@ -3,13 +3,13 @@ import type {
   AuthorizationInput,
   AuthorizationOptions,
   Decision,
-} from '@hexmon_tech/core';
+} from '@hexmon_tech/acccess-control-core';
 import type {
   RebacAdapter,
   RebacCheckInput,
   RebacCheckResult,
   RelationshipTuple,
-} from '@hexmon_tech/engine-rebac';
+} from '@hexmon_tech/acccess-control-engine-rebac';
 import { describe, expect, it, vi } from 'vitest';
 
 import { HybridEngine } from '../src/engine';

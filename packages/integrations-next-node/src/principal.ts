@@ -1,4 +1,4 @@
-import type { Principal } from '@hexmon_tech/core';
+import type { Principal } from '@hexmon_tech/acccess-control-core';
 
 /** Error thrown by placeholder APIs that must be implemented by consumers. */
 export class NotImplementedError extends Error {
