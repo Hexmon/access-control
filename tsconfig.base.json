@@ -4,8 +4,9 @@
     "lib": ["ES2022"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "baseUrl": ".",
     "paths": {
-      "@hexmon_tech/*": ["./packages/*/src/index.ts", "./packages/*/src"]
+      "@hexmon_tech/acccess-control-*": ["./packages/*/src/index.ts", "./packages/*/src"]
     },
     "strict": true,
     "noImplicitAny": true,
